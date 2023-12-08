@@ -17,6 +17,13 @@ body {
   background-size: cover;
 }
 
+.pressToPlay {
+  color: #757575;
+  position: fixed;
+  right: 1vw;
+  bottom: 1vh;
+}
+
 canvas {
   width: 100%;
   height: 100%;
