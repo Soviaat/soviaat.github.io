@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Aleo");
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@300&family=Roboto+Slab&display=swap');
 
 :root {
   font-family: "Aleo", sans-serif;
@@ -17,11 +18,20 @@ body {
   background-size: cover;
 }
 
-.pressToPlay {
+.bottom {
   color: #757575;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.2em;
   position: fixed;
-  right: 1vw;
   bottom: 1vh;
+}
+
+.author {
+  left: .5vw;
+}
+
+.click {
+  right: 1vw;
 }
 
 canvas {
