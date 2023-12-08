@@ -85,25 +85,17 @@
 
       const container = document.querySelector(".fireworks");
       const fireworks = new Fireworks.default(container, {
-        sound: {
-          enabled: true,
-          files: ["explosion1.mp3"],
-          volume: {
-            min: 2,
-            max: 4,
-          }
-        },
+        traceLength: 4.13,
+        traceSpeed: 30,
+        flickering: 80,
+        intensity: 15,
+        explosion: 8,
         acceleration: 1.0,
         opacity: 0.2,
         brightness: {
           min: 87,
           max: 100,
         },
-        traceLength: 4.13,
-        traceSpeed: 30,
-        flickering: 80,
-        intensity: 15,
-        explosion: 8,
         decay: {
           min: 0.015,
           max: 0.0247,
