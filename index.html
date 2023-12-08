@@ -86,53 +86,47 @@
 
       initCountdown();
 
-      var constraints = { audio: true }; // add video constraints if required
-
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        var audioContext = new AudioContext();
-        const container = document.querySelector(".fireworks");
-        const fireworks = new Fireworks.default(container, {
-          traceLength: 4.13,
-          traceSpeed: 30,
-          flickering: 80,
-          intensity: 15,
-          explosion: 8,
-          acceleration: 1.0,
-          opacity: 0.2,
-          sound: {
-            enabled: true,
-            files: [
-              "sounds/explosion0.mp3",
-              "sounds/explosion1.mp3",
-              "sounds/explosion2.mp3",
-            ],
-            volume: {
-              min: 2,
-              max: 4,
-            },
+      const container = document.querySelector(".fireworks");
+      const fireworks = new Fireworks.default(container, {
+        traceLength: 4.13,
+        traceSpeed: 30,
+        flickering: 80,
+        intensity: 15,
+        explosion: 8,
+        acceleration: 1.0,
+        opacity: 0.2,
+        sound: {
+          enabled: true,
+          files: [
+            "sounds/explosion0.mp3",
+            "sounds/explosion1.mp3",
+            "sounds/explosion2.mp3",
+          ],
+          volume: {
+            min: 2,
+            max: 4,
           },
-          brightness: {
-            min: 87,
-            max: 100,
+        },
+        brightness: {
+          min: 87,
+          max: 100,
+        },
+        decay: {
+          min: 0.015,
+          max: 0.0247,
+        },
+        lineWidth: {
+          explosion: {
+            min: 1,
+            max: 2.58,
           },
-          decay: {
-            min: 0.015,
-            max: 0.0247,
+          trace: {
+            min: 0.1,
+            max: 3.71,
           },
-          lineWidth: {
-            explosion: {
-              min: 1,
-              max: 2.58,
-            },
-            trace: {
-              min: 0.1,
-              max: 3.71,
-            },
-          },
-        });
-        getAudioContext().resume();
-        fireworks.start();
+        },
       });
+      fireworks.start();
     </script>
   </body>
 </html>
