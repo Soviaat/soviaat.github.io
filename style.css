@@ -117,15 +117,19 @@ label .checkmark:after {
 
 .middle {
   position: absolute;
+  padding: 0 10px 20px 10px;
+  border-radius: 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   user-select: none;
+  background-color: #3131315e;
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 5px 10px #000;
 }
-
 .time {
-  color: #d99c3b;
+  color: #e79f2c;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
