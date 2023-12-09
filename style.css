@@ -228,6 +228,6 @@ label .checkmark:after {
 }
 }
 
-.dropdown-content li:hover {background-color: #ddd; border-radius: 5px;}
+.dropdown-content li:hover {background-color: #42413f; border-radius: 5px;}
 
 .show {display:block;}
