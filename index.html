@@ -42,7 +42,10 @@
 
     <div class="bottom">
       &copy; Soviaat
-    </div>
+      <a class="source" href="https://github.com/Soviaat/soviaat.github.io" target="_blank"> 
+        Source code
+        <img src="github-mark-white.svg" alt="">
+      </a>
 
 
     </div>
@@ -73,8 +76,6 @@
     <!-- UNPKG -->
     <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
 
-    <!-- bootstrap -->
-
     <script>
       function dropDown() {
         document.getElementById('dropDown').classList.toggle("show");
@@ -82,7 +83,7 @@
 
       window.onclick = function(e) {
         if (!e.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var dropdowns = document.getElementsByClassName("dropdown-content");   // i know that bootstrap exists but i don't really care
           var i;
           for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
@@ -92,7 +93,6 @@
           }
         }
       }
-
 
       const d = document.getElementById("d");
       const h = document.getElementById("h");
@@ -189,7 +189,7 @@
             },
             // mouse: {
             //   click: true,
-            //   move: true,
+            //   move: true,    why did I even bother? 😹
             //   max: 2,
             // },
           });
@@ -222,6 +222,7 @@
             }
           })
 
+          // Firework toggle
           const toggleFireworks = document.getElementById('toggleFireworks');
           toggleFireworks.addEventListener('change', e => {
             if (e.target.checked) {
