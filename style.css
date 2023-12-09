@@ -191,16 +191,32 @@ label .checkmark:after {
 }
 
 /* Dropdown Content (Hidden by Default) */
+
+@media (max-width: 480) {
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 30lvw;
+    padding: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+  }
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 27.65lvw;
+  min-width: 40lvw;
   padding: 0;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 5px;
 }
+
+
 
 /* Links inside the dropdown */
 .dropdown-content li {
