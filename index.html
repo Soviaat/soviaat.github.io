@@ -14,11 +14,17 @@
   </head>
 
   <body class="fireworks">
-    <div class="bottom click">
-      (Click to hear firework sounds)
-    </div>
-    <div class="bottom author">
-      &copy; Soviaat
+    <div class="bottom">
+      &copy; Soviaat -
+      
+      <label for="trackingChkbx">Track Mouse
+        <input type="checkbox" name="followMouse" class="chkbx" id="trackingChkbx" />
+        <span class="checkmark"></span>
+      </label>
+      <label for="soundChkbx">Toggle Sound
+        <input type="checkbox" name="soundBox" class="chkbx" id="soundChkbx" checked="true"/>
+        <span class="checkmark"></span>
+      </label>
     </div>
     <div class="middle">
       <h1 class="label">New Year Countdown</h1>
@@ -92,56 +98,92 @@
 
       initCountdown();
 
-      const container = document.querySelector(".fireworks");
-      const fireworks = new Fireworks.default(container, {
-        traceLength: 4.13,
-        traceSpeed: 30,
-        flickering: 80,
-        intensity: 15,
-        explosion: 8,
-        acceleration: 1.0,
-        opacity: 0.2,
-        rocketsPoint: {
-          min: 35,
-          max: 76
-        },
-        sound: {
-          enabled: true,
-          files: [
-            "sounds/explosion0.mp3",
-            "sounds/explosion1.mp3",
-            "sounds/explosion2.mp3",
-          ],
-          volume: {
-            min: 2,
-            max: 4,
-          },
-        },
-        brightness: {
-          min: 87,
-          max: 100,
-        },
-        decay: {
-          min: 0.015,
-          max: 0.0247,
-        },
-        lineWidth: {
-          explosion: {
-            min: 1,
-            max: 2.58,
-          },
-          trace: {
-            min: 0.1,
-            max: 3.71,
-          },
-        },
-        mouse: {
-          click: true,
-          move: true,
-          max: 2
+      document.addEventListener("DOMContentLoaded", function() {
+        
+        const container = document.querySelector(".fireworks");
+        let fireworks;
+        
+        function initializeFireworks() {
+          const fireworks = new Fireworks.default(container, {
+            traceLength: 4.13,
+            traceSpeed: 30,
+            flickering: 80,
+            intensity: 15,
+            explosion: 8,
+            acceleration: 1.0,
+            opacity: 0.2,
+            rocketsPoint: {
+              min: 35,
+              max: 76,
+            },
+            sound: {
+              enabled: true,
+              files: [
+                "sounds/explosion0.mp3",
+                "sounds/explosion1.mp3",
+                "sounds/explosion2.mp3",
+              ],
+              volume: {
+                min: 2,
+                max: 4,
+              },
+            },
+            brightness: {
+              min: 87,
+              max: 100,
+            },
+            decay: {
+              min: 0.015,
+              max: 0.0247,
+            },
+            lineWidth: {
+              explosion: {
+                min: 1,
+                max: 2.58,
+              },
+              trace: {
+                min: 0.1,
+                max: 3.71,
+              },
+            },
+            // mouse: {
+            //   click: true,
+            //   move: true,
+            //   max: 2,
+            // },
+          });
+          fireworks.start();
+          
+          // Mouse Tracking toggle
+          const trackingChkbx = document.getElementById('trackingChkbx');
+          trackingChkbx.addEventListener('change', e => {
+            let isChecked = Boolean(e.target.checked)
+            if(e.target.checked) {
+              console.log("Tracking mouse:", isChecked)
+              fireworks.updateOptions({"mouse":{"click": true, "move": true, "max": 1}})
+            } else if(!e.target.checked) {
+              
+              console.log("Tracking mouse:", isChecked )
+              fireworks.updateOptions({"mouse":{"click": false, "move": false}})
+            }
+          });
+
+          // Sound toggle
+          const soundChkbx = document.getElementById('soundChkbx');
+          soundChkbx.addEventListener('change', e => {
+            let isChecked = Boolean(e.target.checked);
+            if (e.target.checked) {
+              console.log("Sound enabled:", isChecked)
+              fireworks.updateOptions({"sound":{"enabled": true}})
+            } else if(!e.target.checked) {
+              console.log("Sound enabled:", isChecked)
+              fireworks.updateOptions({"sound":{"enabled": false}})
+            }
+          })
         }
+        
+        initializeFireworks();
       });
-      fireworks.start();
     </script>
   </body>
 </html>
