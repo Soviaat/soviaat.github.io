@@ -5,34 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="shortcut icon"
-      href="favicon.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <title>New Year Countdown</title>
   </head>
 
   <body class="fireworks">
     <div class="top">
       <div class="dropdown">
-      <button onclick="dropDown()" class="dropbtn">☰</button>
+        <button onclick="dropDown()" class="dropbtn">☰</button>
         <ul class="dropdown-content" id="dropDown">
           <li>
-            <label for="trackingChkbx">Track Mouse
-              <input type="checkbox" name="followMouse" class="chkbx" id="trackingChkbx" />
+            <label for="trackingChkbx"
+              >Track Mouse
+              <input
+                type="checkbox"
+                name="followMouse"
+                class="chkbx"
+                id="trackingChkbx"
+              />
               <span class="checkmark"></span>
             </label>
           </li>
           <li>
-            <label for="soundChkbx">Toggle Sound
-              <input type="checkbox" name="soundBox" class="chkbx" id="soundChkbx"/>
+            <label for="soundChkbx"
+              >Toggle Sound
+              <input
+                type="checkbox"
+                name="soundBox"
+                class="chkbx"
+                id="soundChkbx"
+              />
               <span class="checkmark"></span>
             </label>
           </li>
           <li>
-            <label for="toggleFireworks">Toggle Fireworks
-              <input type="checkbox" name="fireworkToggle" class="chkbx" id="toggleFireworks" checked/>
+            <label for="toggleFireworks"
+              >Toggle Fireworks
+              <input
+                type="checkbox"
+                name="fireworkToggle"
+                class="chkbx"
+                id="toggleFireworks"
+                checked
+              />
               <span class="checkmark"></span>
             </label>
           </li>
@@ -42,16 +57,18 @@
 
     <div class="bottom">
       &copy; Soviaat
-      <a class="source" href="https://github.com/Soviaat/soviaat.github.io" target="_blank"> 
+      <a
+        class="source"
+        href="https://github.com/Soviaat/soviaat.github.io"
+        target="_blank"
+      >
         Source code
-        <img src="github-mark-white.svg" alt="">
+        <img src="github-mark-white.svg" alt="" />
       </a>
-
-
     </div>
     <div class="middle">
       <h1 class="label">New Year Countdown</h1>
-      <div class="time">
+      <div class="time" id="time">
         <span>
           <div id="d">00</div>
           Days
@@ -69,6 +86,7 @@
           Seconds
         </span>
       </div>
+      <div class="newyear" id="newyear" hidden>Happy New Year!</div>
     </div>
     <!-- jsDelivr  -->
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
@@ -78,72 +96,110 @@
 
     <script>
       function dropDown() {
-        document.getElementById('dropDown').classList.toggle("show");
+        document.getElementById("dropDown").classList.toggle("show");
       }
 
-      window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");   // i know that bootstrap exists but i don't really care
+      window.onclick = function (e) {
+        if (!e.target.matches(".dropbtn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content"); // i know that bootstrap exists but i don't really care
           var i;
           for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show')
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
             }
           }
         }
-      }
+      };
 
-      const d = document.getElementById("d");
-      const h = document.getElementById("h");
-      const m = document.getElementById("m");
-      const s = document.getElementById("s");
+      document.addEventListener("DOMContentLoaded", function () {
+        const d = document.getElementById("d");
+        const h = document.getElementById("h");
+        const m = document.getElementById("m");
+        const s = document.getElementById("s");
 
-      function getTrueNumber(num) {
-        return num < 10 ? "0" + num : num;
-      }
+        function getTrueNumber(num) {
+          return num < 10 ? "0" + num : num;
+        }
+        function calculateRemainingTime() {
+          const comingYear = new Date().getFullYear() + 1;
+          const comingDate = new Date(`Jan 1, ${comingYear} 00:00:00`);
+          const time = document.getElementById("time");
 
-      function calculateRemainingTime() {
+          const now = new Date();
+          const remainingTime = comingDate.getTime() - now.getTime();
+          const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const mins = Math.floor(
+            (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const secs = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+          d.innerHTML = getTrueNumber(days);
+          h.innerHTML = getTrueNumber(hours);
+          m.innerHTML = getTrueNumber(mins);
+          s.innerHTML = getTrueNumber(secs);
+
+          return remainingTime;
+        }
+
+        function showNewYearMessage() {
+          const newYearDiv = document.getElementById("newyear");
+          newYearDiv.removeAttribute("hidden");
+          time.style.display = 'none';
+          resetCountdownAndMessage();
+        }
+
+        function resetCountdownAndMessage() {
+          // 48 óra (2 nap) visszaszámlálás
+          setTimeout(function() {
+            // Az üzenet eltüntetése
+            const newYearDiv = document.getElementById("newyear");
+            newYearDiv.setAttribute("hidden", true);
+            // A számláló megjelenítése
+            time.style.display = 'block';
+          }, 48 * 60 * 60 * 1000); 
+        }
+
         const comingYear = new Date().getFullYear() + 1;
-        const comingDate = new Date(`Jan 1, ${comingYear} 00:00:00`);
 
-        const now = new Date();
-        const remainingTime = comingDate.getTime() - now.getTime();
-        const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const mins = Math.floor(
-          (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const secs = Math.floor((remainingTime % (1000 * 60)) / 1000);
+        // const targetDate = new Date(`Jan 1, ${comingYear} 00:00:00`);
+        const targetDate = new Date(`Dec 10, 2023 18:29:00`);
+        const currentDate = new Date();
 
-        d.innerHTML = getTrueNumber(days);
-        h.innerHTML = getTrueNumber(hours);
-        m.innerHTML = getTrueNumber(mins);
-        s.innerHTML = getTrueNumber(secs);
+        const timeUntilTargetDate =
+          targetDate.getTime() - currentDate.getTime();
 
-        return remainingTime;
-      }
+        if (timeUntilTargetDate > 0) {
+          // Ha a célidő még nem telt el, akkor időzítjük az üzenet megjelenítését
+          setTimeout(showNewYearMessage, timeUntilTargetDate);
+        } else {
+          // Ha a célidő már elmult, akkor az üzenetet azonnal megjelenítjük
+          showNewYearMessage();
+          
+        }
 
-      function initCountdown() {
-        const interval = setInterval(() => {
-          const remainingTimeInMs = calculateRemainingTime();
+        function initCountdown() {
+          const interval = setInterval(() => {
+            const remainingTimeInMs = calculateRemainingTime();
 
-          if (remainingTimeInMs <= 1000) {
-            clearInterval(interval);
-            initCountdown();
-          }
-        }, 1000);
-      }
+            if (remainingTimeInMs <= 1000) {
+              clearInterval(interval);
+              initCountdown();
+            }
+          }, 1000);
+        }
 
-      initCountdown();
+        initCountdown();
 
-      document.addEventListener("DOMContentLoaded", function() {
+        // A függvény, ami megjeleníti az üzenetet
         
+
         const container = document.querySelector(".fireworks");
         let fireworks;
-        
+
         function initializeFireworks() {
           const fireworks = new Fireworks.default(container, {
             traceLength: 4.13,
@@ -194,45 +250,46 @@
             // },
           });
           fireworks.start();
-          
+
           // Mouse Tracking toggle
-          const trackingChkbx = document.getElementById('trackingChkbx');
-          trackingChkbx.addEventListener('change', e => {
-            let isChecked = Boolean(e.target.checked)
-            if(e.target.checked) {
-              console.log("Tracking mouse:", isChecked)
-              fireworks.updateOptions({"mouse":{"click": true, "move": true, "max": 1}})
-            } else if(!e.target.checked) {
-              
-              console.log("Tracking mouse:", isChecked )
-              fireworks.updateOptions({"mouse":{"click": false, "move": false}})
+          const trackingChkbx = document.getElementById("trackingChkbx");
+          trackingChkbx.addEventListener("change", (e) => {
+            let isChecked = Boolean(e.target.checked);
+            if (e.target.checked) {
+              console.log("Tracking mouse:", isChecked);
+              fireworks.updateOptions({
+                mouse: { click: true, move: true, max: 1 },
+              });
+            } else if (!e.target.checked) {
+              console.log("Tracking mouse:", isChecked);
+              fireworks.updateOptions({ mouse: { click: false, move: false } });
             }
           });
 
           // Sound toggle
-          const soundChkbx = document.getElementById('soundChkbx');
-          soundChkbx.addEventListener('change', e => {
+          const soundChkbx = document.getElementById("soundChkbx");
+          soundChkbx.addEventListener("change", (e) => {
             let isChecked = Boolean(e.target.checked);
             if (e.target.checked) {
-              console.log("Sound enabled:", isChecked)
-              fireworks.updateOptions({"sound":{"enabled": true}})
-            } else if(!e.target.checked) {
-              console.log("Sound enabled:", isChecked)
-              fireworks.updateOptions({"sound":{"enabled": false}})
+              console.log("Sound enabled:", isChecked);
+              fireworks.updateOptions({ sound: { enabled: true } });
+            } else if (!e.target.checked) {
+              console.log("Sound enabled:", isChecked);
+              fireworks.updateOptions({ sound: { enabled: false } });
             }
-          })
+          });
 
           // Firework toggle
-          const toggleFireworks = document.getElementById('toggleFireworks');
-          toggleFireworks.addEventListener('change', e => {
+          const toggleFireworks = document.getElementById("toggleFireworks");
+          toggleFireworks.addEventListener("change", (e) => {
             if (e.target.checked) {
               fireworks.start();
             } else if (!e.target.checked) {
               fireworks.waitStop();
             }
-          })
+          });
         }
-        
+
         initializeFireworks();
       });
     </script>

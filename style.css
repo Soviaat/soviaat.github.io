@@ -18,6 +18,13 @@ body {
   background-size: cover;
 }
 
+.newyear {
+  color: #e79f2c;
+  text-transform: uppercase;
+  font-size: 40px;
+  justify-content: center;
+}
+
 .source {
   position: fixed;
   left: 93vw;
