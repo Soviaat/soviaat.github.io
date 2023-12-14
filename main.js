@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
       intensity: 15,
       explosion: 8,
       acceleration: 1.0,
-      opacity: 0.2,
+      opacity: 0.6,
       rocketsPoint: {
         min: 35,
         max: 76,
@@ -136,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
         max: 100,
       },
       decay: {
-        min: 0.015,
-        max: 0.0247,
+        min: 0.0097,
+        max: 0.0374,
       },
       lineWidth: {
         explosion: {
