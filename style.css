@@ -263,11 +263,3 @@ label .checkmark:after {
 .dropdown-content li:hover {background-color: #312e2b; border-radius: 5px;}
 
 .show {display: block;}
-
-.menuIcon, #open {
-  display: block;
-}
-
-.closeIcon, #close {
-  display: none;
-}
