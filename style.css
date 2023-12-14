@@ -78,7 +78,7 @@ canvas {
 label {
   position: relative;
   padding-left: 30px;
-  margin: 0 5px 0 5px;
+  margin: 0 10px 0 10px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -144,6 +144,7 @@ label .checkmark:after {
   color: transparent;
   animation: moveBg 30s linear infinite;
   text-shadow: #8b6f39 0px 0px 30px;
+  margin: 25px 15px 20px 15px;
 }
 
 @keyframes moveBg {
