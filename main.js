@@ -177,15 +177,18 @@ document.addEventListener("DOMContentLoaded", function () {
     soundChkbx.addEventListener("change", (e) => {
       const slideCtnr = document.querySelector(".slidecontainer");
       const volSlider = document.getElementById("slider");
+      const volContainer = document.getElementById("volumeContainer");
       let isChecked = Boolean(e.target.checked);
       if (e.target.checked) {
         console.log("Sound enabled:", isChecked);
         fireworks.updateOptions({ sound: { enabled: true } });
+        volContainer.style.display = "inline-flex";
         volSlider.disabled = false;
         slideCtnr.classList.remove("disabled");
       } else if (!e.target.checked) {
         console.log("Sound enabled:", isChecked);
         fireworks.updateOptions({ sound: { enabled: false } });
+        volContainer.style.display = "none";
         volSlider.disabled = true;
         slideCtnr.classList.add("disabled");
       }

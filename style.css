@@ -168,6 +168,7 @@ label .checkmark:after {
   background-color: #3131315e;
   backdrop-filter: blur(2px);
   box-shadow: 0px 5px 10px #000;
+  z-index: -1;
 }
 .time {
   color: #e79f2c;
@@ -220,7 +221,7 @@ label .checkmark:after {
   display: inline-block;
 }
 
-@media (max-width: 530px){
+@media (max-width: 800px){
   .dropdown-content {
     display: none;
     position: absolute;
@@ -240,7 +241,7 @@ label .checkmark:after {
     list-style-type: none;
   }
 }
-@media (min-width: 531px) {
+@media (min-width: 801px) {
   .dropdown-content {
   display: none;
   position: absolute;
@@ -252,16 +253,17 @@ label .checkmark:after {
   border-radius: 5px;
 }
 
-.dropdown-content li {
-  color: #ebebeb;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: inline-block;
-  list-style-type: none;
-}
+  .dropdown-content li {
+    color: #ebebeb;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: inline-block;
+    list-style-type: none;
+  }
 }
 
 .dropdown-content li:hover {background-color: #312e2b; border-radius: 5px;}
+.dropdown-content li:last-child {display: none;}
 
 .show {display: block;}
 
@@ -305,6 +307,7 @@ label .checkmark:after {
 }
 
 .slidecontainer {
+  position: relative;
   transition: filter .3s;
   user-select: none;
 }
