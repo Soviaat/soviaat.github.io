@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>New Year Countdown</title>
+  </head>
+
+  <body class="fireworks">
+    <div class="top">
+      <div class="dropdown">
+        <button onclick="dropDown()" class="dropbtn" id="dropbtn">
+          <i class="menuIcon material-icons" id="open" style="display: block;">menu</i>
+          <i class="closeIcon material-icons" id="close" style="display: none;">close</i>
+        </button>
+        <ul class="dropdown-content" id="dropDown">
+          <li>
+            <label for="toggleFireworks"
+              >Toggle Fireworks
+              <input
+                type="checkbox"
+                name="fireworkToggle"
+                class="chkbx"
+                id="toggleFireworks"
+                checked
+              />
+              <span class="checkmark"></span>
+            </label>
+          </li>
+          <li>
+            <label for="trackingChkbx"
+              >Follow Mouse
+              <input
+                type="checkbox"
+                name="followMouse"
+                class="chkbx"
+                id="trackingChkbx"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </li>
+          <li>
+            <label for="soundChkbx"
+              >Toggle Sound
+              <input
+                type="checkbox"
+                name="soundBox"
+                class="chkbx"
+                id="soundChkbx"
+              />
+              <span class="checkmark"></span>
+            </label>
+          </li>
+          <li id="volumeContainer">
+            <div class="slidecontainer disabled" style="display: inline-flex; gap: 10px; align-items: center;"> Volume
+              <input type="range" min="1" max="15" value="2" class="slider" id="slider" disabled></input>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      &copy; Soviaat
+      <a
+        class="source"
+        onclick="window.open('https:/\/github.com/Soviaat/soviaat.github.io/', target='_blank')"
+      >
+        Source code
+      </a>
+    </div>
+    <div class="middle">
+      <h1 class="label">New Year Countdown</h1>
+      <div class="time" id="time">
+        <span>
+          <div id="d">00</div>
+          Days
+        </span>
+        <span>
+          <div id="h">00</div>
+          Hours
+        </span>
+        <span>
+          <div id="m">00</div>
+          Minutes
+        </span>
+        <span>
+          <div id="s">00</div>
+          Seconds
+        </span>
+      </div>
+      <div class="newyear" id="newyear" hidden>Happy New Year!</div>
+    </div>
+    <!-- jsDelivr  -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <!-- UNPKG -->
+    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
