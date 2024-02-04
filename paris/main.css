@@ -1,0 +1,1098 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@300&family=Roboto+Slab&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Glegoo&display=swap');
+
+:root {
+  --primary: #dbcd95;
+  --secondary: #848666;
+  --reddish-brown: #5b2e30;
+  --brick: #a25333;
+
+  --jpn: url('https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg');
+  --egy: url('https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg');
+  --jor: url('https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Jordan.svg');
+  --yem: url('https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Yemen.svg');
+  --ger: url('https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg');
+  --kor: url('https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg');
+  --rus: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg');
+  --leb: url('https://upload.wikimedia.org/wikipedia/commons/5/59/Flag_of_Lebanon.svg');
+  --indo: url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg');
+  --usa: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg');
+  --can: url('https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg');
+  --chi: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg');
+  --sau: url('https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg');
+  --chn: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg');
+  --cze: url('https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg');
+  --geo: url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg');
+  --por: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg');
+  --bul: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Bulgaria.svg');
+  --kuv: url('https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Kuwait.svg');
+  --aus: url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg');
+  --arm: url('https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg');
+  --mex: url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg');
+  --pol: url('https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg');
+  --arg: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg');
+  --esp: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg');
+  --gre: url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg');
+  --unk: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg');
+  --bra: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg');
+  --swi: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg');
+  --alg: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Algeria.svg');
+  --mor: url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg');
+  --tun: url('https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg');
+  --den: url('https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg');
+  --cam: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_Cambodia.svg');
+  --pal: url('https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg');
+  --tur: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg');
+  --qat: url('https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg');
+  --isr: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg');
+  --sen: url('https://upload.wikimedia.org/wikipedia/commons/f/fd/Flag_of_Senegal.svg');
+  --ned: url('https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg');
+  
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth; 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#grid img {
+  height: 300px;
+}
+
+body {
+  width: 100%;
+  grid-template-areas: 
+  "header header header"
+  "main main main"
+  "footer footer footer";
+  background-image: url('https://wallpaperswide.com/download/travel_paris-wallpaper-2560x1440.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Ubuntu', serif;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  margin: 0;
+}
+
+#main {
+  font-family: 'Glegoo', serif;
+  grid-area: main;
+  color: #fff;
+  font-size: 20px;
+  padding: 5em;
+  display: flexbox;
+  flex-grow: 10px;
+  flex: 1;
+  z-index: 1;
+  backdrop-filter: blur(10px) brightness(80%);
+}
+
+::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0);
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 2em;
+  transition: .7s background-color;
+  padding: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #dbcd95bd;
+  border-radius: 2em;
+}
+
+section:first-child {
+  background-color: var(--secondary);
+  border-radius: 15px;
+  height: min-content;
+  padding: 0 20px 1px 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+section:first-child img {
+  border-radius: 10px;
+}
+
+section {
+  background-color: var(--reddish-brown);
+  border-radius: 15px;
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  max-width: min-content;
+  max-height: 35em;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+section::-webkit-scrollbar-track {
+  border-radius: 20em;
+}
+
+section img {
+  width: 30%;
+  float: right;
+  border-radius: 10px;
+  transition: .3s;
+  margin-left: 30px;
+}
+
+section img:hover {
+  box-shadow: #000 0px 10px 40px 0;
+}
+
+section p {
+  text-align: left;
+}
+
+nav {
+  padding: 5px;
+  text-align: center;
+  max-width: 200vh;
+  background-color: var(--reddish-brown);
+
+  z-index: 5;
+  position: sticky;
+  top: -30px;
+}
+
+h1 {
+  background-color: var(--reddish-brown);
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 40px;
+  width: fit-content;
+  border-radius: 10px;
+  margin: 10px auto 25px auto;
+}
+
+h2 {
+  position: static;
+  font-family: 'Kanit';
+  padding: 20px;
+  border-radius: .25em;
+  color: black;
+  background-color: var(--secondary);
+  height: fit-content;
+  max-width: fit-content;
+  margin: 0;
+}
+
+
+#nav {
+  margin: auto;
+}
+
+hr {
+  height: 10px;
+  border: solid 1px #3f3f3f;
+  background-color: #3f3f3f;
+  border-radius: 10px;
+}
+
+header {
+  width: 100%;
+  z-index: 2;
+  background-color: #ffffff2f;
+  position: fixed;
+  grid-area: header;
+  display: inline-flex;
+  padding: .5em;
+  height: 10vh;
+  backdrop-filter: blur(5px);
+}
+
+#logoImg {
+  margin-top: .5em;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dropdown #latvanyossagok::after {
+  content: url('/expand_more_FILL0_wght400_GRAD0_opsz24.svg');
+  position: absolute;
+  color: rgb(255, 255, 255);
+  top: 7px;
+  left: 160px;
+  width: fit-content;
+  height: 20px;
+}
+
+.dropdown #latvanyossagok:hover::after {
+  content: url('/expand_less_FILL0_wght400_GRAD0_opsz24.svg');
+}
+
+header ul {
+  display: block;
+  align-items: center;
+  padding-inline-start: 0;
+}
+
+header li {
+  display: inline-flex;
+  margin: 0 10px;
+  font-size: 20px;
+  padding: 5px 6px;
+  position: relative;
+}
+
+/* ul {
+  font-size: 20px;
+}
+
+ul li{
+  padding: 5px 6px;
+  margin: 0 10px;
+  display: inline-block;
+  position: relative;
+} */
+
+header li:last-child {
+  align-self: center;
+}
+
+.container {
+  display: inline-grid;
+  grid-template-columns: 100em 40em;
+}
+
+#leiras-img img {
+  max-width: 200px;
+  float: right;
+}
+
+#lerias-img img{
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#leiras-txt{
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 0 10em 0;
+}
+
+#underline-effect::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #dbcd95;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+#underline-effect:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #e4e4e4;
+  transition: .3s color;
+}
+
+footer {
+  display: flex;
+  grid-area: footer;
+  min-height: 3em;
+}
+
+footer div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px) brightness(60%);
+}
+
+footer p {
+  text-align: end;
+  font-size: 20px;
+  color: var(--primary);
+  justify-content: left;
+  margin: 10px;
+}
+
+.grid-container {
+  display: flex;
+  place-items: center;
+  margin: auto;
+  height: 80vh;
+}
+
+#title{
+  position: relative;
+  width: 500px;
+  color: #fff;
+  grid-template-columns: 3em;
+  align-items: center;
+  font-size: 7em;
+  place-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+#title span {
+  font-weight: 800;
+  background: url('https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8fA%3D%3D');
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-family: 'Kanit', sans-serif;  
+  font-size: 1.1em;
+  background-position: 75% 20%;
+  -webkit-text-fill-color: #0000002f;
+  text-shadow: #ff0000 inset 0px -4px 0px;
+  animation: shiftBackground 10s infinite;
+}
+
+#title span::before {
+  box-shadow: black 3px 10px 20px 0;
+  border-radius: 11px;
+  position: absolute;
+  left: -20px;
+  top: 25px;
+  content: '';
+  background-color: #eeeeee;
+  width: 3em;
+  height: 1.3em;
+  z-index: -2;
+}
+
+@keyframes shiftBackground {
+  0% {
+    background-position: 75% 20%;
+  }
+
+  50% {
+    background-position: 75% 75%;
+  }
+
+  100% {
+    background-position: 75% 20%;
+  }
+}
+
+#description {
+  width: 15em;
+  line-height: 1.4em;
+  font-family: "Glegoo", serif;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: end;
+}
+
+#titleImg img{
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 10px;
+  filter: drop-shadow(2px 2px 5px #272727);
+}
+
+#titleImg {
+  width: fit-content;
+  height: auto;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 160px;
+  background-color: var(--secondary);
+  text-align: center;
+  width: 10em;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  border-radius: 5px;
+  transition: .4s background-color, .4s color;
+}
+
+.dropdown-content li {
+  min-width: 10em;
+  padding: 10px 30px;
+  margin: 0;
+  text-align:left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content li:hover {
+  background-color: var(--reddish-brown);
+  color: var(--primary);
+  border-radius: 5px;
+}
+
+#logoImg, #logo {
+  width: 75px;
+  height: auto;
+}
+
+#title a{
+  z-index: 1;
+  font-size: 20px;
+  color: var(--reddish-brown);
+  font-family: 'Ubuntu', sans-serif;
+  position: relative;
+  text-decoration: none;
+  border-radius: .3em;
+  left: 13.4em;
+  padding: 10px;
+  bottom: 90px;
+  background: var(--primary);
+  transition: .3s background, .3s color;
+  box-shadow: 2px 2px 3px black;
+}
+
+#title > a:hover {
+  background: var(--brick);
+  color: white;
+}
+
+@media screen and (max-width: 900px) {
+
+  header nav{
+    font-size: 10px;
+  }
+
+  #titleImg {
+    display: none;
+  }
+
+  #title > a {
+    min-width: 30px;
+  }
+  
+  #title {
+    width: 100%;
+    margin: auto;
+  }
+
+  #logo, #logoImg {
+    width: 75px;
+    height: auto;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  #title {
+    margin: auto;
+  }
+  #title > a {
+    min-width: 30px;
+  }
+
+  #title span {
+    margin: auto;
+  }
+}
+
+#bevezeto img {
+  width: 20%;
+  height: auto;
+}
+
+h3 {
+  text-align: center;
+}
+
+table, tr, td {
+  border-spacing: 0;
+  transition: .3s;
+}
+
+table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-spacing: 1px;
+}
+
+tr:last-child {
+  background-color: var(--secondary);
+}
+
+tr, td {
+  text-align: center;
+  margin: 20px;
+  padding: 5px 20px;
+}
+
+tr {
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+tr:first-child {
+  color: #000;
+  font-weight: 600;
+  background-color: var(--primary);
+}
+
+tr:first-child td:first-child {
+  border-top-left-radius: 10px;
+}
+tr:first-child td:last-child {
+  border-top-right-radius: 10px;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+tr:first-child td:last-child:hover {
+  cursor: pointer;
+  box-shadow: inset -5px 3px 2px 0px black;
+}
+
+tr:first-child td:first-child:hover {
+  cursor: pointer;
+  box-shadow: inset 5px 3px 2px 0px black;
+}
+
+tr:last-child td:first-child:hover {
+  box-shadow: inset 5px -3px 2px 0px black;
+}
+
+tr:last-child td:last-child:hover {
+  box-shadow: inset -5px -3px 2px 0px black;
+}
+
+tr:first-child td:nth-child(2):hover, tr:first-child td:nth-child(3):hover {
+  box-shadow: inset 0 3px 2px 0px black;
+}
+
+tr:last-child td:nth-child(2):hover, tr:last-child td:nth-child(3):hover {
+  box-shadow: inset 0 -3px 2px 0px black;
+}
+
+#sister-cities tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#sister-cities {
+  margin: auto;
+}
+
+#sister-cities img{
+  float: none;
+  border-radius: 5px;
+  width: 40px;
+  margin: 0 5px 0 -3px;
+  height: auto;
+}
+
+#sister-cities tr td ul li {
+  list-style: '- ';
+  text-align: left;
+  margin-bottom: 5px;
+  line-height: 25px;
+}
+
+#sister-cities tr td {
+  width: 20em;
+}
+
+#sister-cities table {
+  font-size: 16px;
+  min-width: min-content;
+  overflow: visible;
+}
+
+#sister-cities th {
+  transition: .3s;
+}
+
+#sister-cities th:hover {
+  box-shadow: inset 0 0 3px 2px black;
+}
+
+#sister-cities tr td:hover {
+  box-shadow: inset 0 0 5px 3px black;
+}
+
+
+@media screen and (max-width: 835px) {
+  #sister-cities table {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 750px) {
+  #sister-cities table {
+    font-size: 10px;
+  }
+}
+
+/* Szerintem ide ne nézz, ha nem akarsz sírni a nap elkövetkezendő részében */
+
+
+#jpn::after {
+  content: " ";
+  background-image: var(--jpn);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+#egy::after {
+  content: " ";
+  background-image: var(--egy);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#yem::after {
+  content: " ";
+  background-image: var(--yem);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#ger::after {
+  content: " ";
+  background-image: var(--ger);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#kor::after {
+  content: " ";
+  background-image: var(--kor);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#rus::after {
+  content: " ";
+  background-image: var(--rus);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+#leb::after {
+  content: " ";
+  background-image: var(--leb);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+#indo::after {
+  content: " ";
+  background-image: var(--indo);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+#usa::after {
+  content: " ";
+  background-image: var(--usa);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#can::after {
+  content: " ";
+  background-image: var(--can);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#chi::after {
+  content: " ";
+  background-image: var(--chi);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#sau::after {
+  content: " ";
+  background-image: var(--sau);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#chn::after {
+  content: " ";
+  background-image: var(--chn);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#cze::after {
+  content: " ";
+  background-image: var(--cze);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#geo::after {
+  content: " ";
+  background-image: var(--geo);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#por::after {
+  content: " ";
+  background-image: var(--por);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#bul::after {
+  content: " ";
+  background-image: var(--bul);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#kuv::after {
+  content: " ";
+  background-image: var(--kuv);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#aus::after {
+  content: " ";
+  background-image: var(--aus);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#arm::after {
+  content: " ";
+  background-image: var(--arm);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#mex::after {
+  content: " ";
+  background-image: var(--mex);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#pol::after {
+  content: " ";
+  background-image: var(--pol);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#arg::after {
+  content: " ";
+  background-image: var(--arg);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#esp::after {
+  content: " ";
+  background-image: var(--esp);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#gre::after {
+  content: " ";
+  background-image: var(--unk);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#bra::after {
+  content: " ";
+  background-image: var(--bra);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#mor::after {
+  content: " ";
+  background-image: var(--mor);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#swi::after {
+  content: " ";
+  background-image: var(--swi);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#alg::after {
+  content: " ";
+  background-image: var(--alg);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#den::after {
+  content: " ";
+  background-image: var(--den);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#cam::after {
+  content: " ";
+  background-image: var(--cam);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#pal::after {
+  content: " ";
+  background-image: var(--pal);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#tur::after {
+  content: " ";
+  background-image: var(--tur);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#qat::after {
+  content: " ";
+  background-image: var(--qat);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#isr::after {
+  content: " ";
+  background-image: var(--isr);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#sen::after {
+  content: " ";
+  background-image: var(--sen);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#ned::after {
+  content: " ";
+  background-image: var(--ned);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
