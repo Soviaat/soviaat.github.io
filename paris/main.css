@@ -226,7 +226,7 @@ header {
 }
 
 .dropdown #latvanyossagok::after {
-  content: url('/expand_more_FILL0_wght400_GRAD0_opsz24.svg');
+  content: url('./expand_more_FILL0_wght400_GRAD0_opsz24.svg');
   position: absolute;
   color: rgb(255, 255, 255);
   top: 7px;
@@ -236,7 +236,7 @@ header {
 }
 
 .dropdown #latvanyossagok:hover::after {
-  content: url('/expand_less_FILL0_wght400_GRAD0_opsz24.svg');
+  content: url('./expand_less_FILL0_wght400_GRAD0_opsz24.svg');
 }
 
 header ul {
@@ -941,9 +941,21 @@ tr:last-child td:nth-child(2):hover, tr:last-child td:nth-child(3):hover {
   top: 5px;
 }
 
-#gre::after {
+#unk::after {
   content: " ";
   background-image: var(--unk);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+#gre::after {
+  content: " ";
+  background-image: var(--gre);
   background-size: 100% 100%;
   display: inline-block;
   height: 20px;
