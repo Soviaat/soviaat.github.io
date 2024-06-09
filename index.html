@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="https://cdn.discordapp.com/avatars/708012757726920784/9b9369790b50777ac23d7f602d0ebcc1.webp?size=256" type="image/x-icon">
+        <meta name="description" content="A VexSoundPause mod hivatalos letöltési oldala.">
+        <title>Soviaat's Mods</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+            :root {
+                --primary: #3d3d3d;
+                --secondary: #1e1e1e;
+                --tertiary: #273ac3;
+                --hover: #6777fe;
+                --gray: #6c6c6c;
+            }
+
+            h1 {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 40px;
+            }
+
+            body {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+                color: white;
+                font-family: "Quicksand";
+                background-color: var(--secondary);
+            }
+
+            .release-container {
+                height: 100vh;
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .releases-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 25em;
+                background-color: var(--primary);
+                padding: 10px;
+                border-radius: .5em;
+                box-shadow: 0 10px 0px #000;
+                transition: box-shadow .5s ease, transform .4s ease, background-color .5s;
+            }
+
+            .releases-info:hover {
+                box-shadow: 0 0 0 #000;
+                background-color: var(--secondary);
+                transform: translateY(10px);
+                outline: 1px solid var(--primary);
+            }
+
+            .release {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 20px;
+            }
+            
+            .release:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                cursor: pointer;
+                font-weight: 600;
+                margin-bottom: 10px;
+                width: fit-content;
+                transition: text-decoration .5s;
+                position: relative;
+            }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 3px;
+                border-radius: 2em;
+                bottom: 0;
+                left: 0;
+                background-color: white;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            h2:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+
+            .release > #link-wrap > a {
+                user-select: none;
+                color: white;
+                text-decoration: none;
+                border-radius: 10px;
+                padding: 10px 20px;
+                transition: background-color .4s, box-shadow .2s;
+                position: relative;
+            }
+
+            #link-wrap > a:first-child {
+                margin-right: 10px;
+            }
+
+            #link-wrap:last-of-type {
+                margin-bottom: 15px;
+            }
+
+            .release > #link-wrap > a:last-child {
+                background-color: var(--tertiary);
+                width: max-content;
+                margin-bottom: 20px;
+            }
+
+            .release > #link-wrap > a:last-child:hover,
+            .release > #link-wrap > a:last-child:focus {
+                background-color: var(--hover);
+                outline: none;
+            }
+
+            .release > #link-wrap > a:first-child:hover,
+            .release > #link-wrap > a:first-child:focus {
+                background-color: var(--primary);
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="release-container">
+            <h1>VexSoundPause</h1>
+            <div id="releases-info" class="releases-info">
+                    Loading latest release...
+            </div>
+        </div>
+    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const repoOwner = 'soviaat';
+            const repoName = 'VexSoundPause';
+            const cacheKey = 'github-releases';
+            const cacheDuration = 60 * 60 * 1000;
+
+            function fetchReleases() {
+                fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
+                    .then(response => {
+                        if (response.status === 403) {
+                            throw new Error('Rate limit exceeded. Please try again maybe in an hour.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const releasesInfo = formatReleases(data);
+                        document.getElementById('releases-info').innerHTML = releasesInfo;
+                        const cachedData = {
+                            timestamp: new Date().getTime(),
+                            releases: data
+                        };
+                        localStorage.setItem(cacheKey, JSON.stringify(cachedData));
+                    })
+                    .catch(error => {
+                        console.error('Error fetching release data:', error);
+                        document.getElementById('releases-info').innerHTML = 'Failed to load release information.';
+                    });
+            }
+
+            function formatReleases(releases) {
+                let releasesInfo = '';
+                releases.forEach(release => {
+                    let assetsInfo = '';
+
+                    if (release.assets.length > 0) {
+                        release.assets.forEach(asset => {
+                            assetsInfo += `<a href="${asset.browser_download_url}" target="_blank">Download</a>`;
+                        });
+                    } else {
+                        assetsInfo = '<p>No assets available for download.</p>';
+                    }
+
+                    releasesInfo += `
+                        <div class="release">
+                            <h2>${release.name}</h2>
+                            <div id="link-wrap">
+                                <a href="${release.html_url}" target="_blank">View Release</a>
+                                ${assetsInfo}
+                            </div>
+                        </div>
+                    `;
+                });
+                return releasesInfo;
+            }
+
+            function loadReleases() {
+                const cachedData = JSON.parse(localStorage.getItem(cacheKey));
+                const now = new Date().getTime();
+
+                if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
+                    const releasesInfo = formatReleases(cachedData.releases);
+                    document.getElementById('releases-info').innerHTML = releasesInfo;
+                } else {
+                    fetchReleases();
+                }
+            }
+
+            loadReleases();
+        });
+    </script>
+</html>
