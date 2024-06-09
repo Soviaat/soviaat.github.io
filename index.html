@@ -100,6 +100,19 @@
                 transform-origin: bottom left;
             }
 
+            .latest {
+                color: #28d751;
+                width: fit-content;
+                font-weight: 600;
+                padding-left: 10px;
+                padding-right: 10px;
+                line-height: 22px;
+                font-size: 12px;
+                border: 2px solid #09b43a;
+                border-radius: 2em;
+                transform: translateY(-5px);
+            }
+
             .release > #link-wrap > a {
                 user-select: none;
                 color: white;
@@ -135,6 +148,17 @@
                 background-color: var(--primary);
                 outline: none;
             }
+
+            ul {
+                list-style-type: none;
+                margin: 0;padding: 0;
+            } 
+
+            li {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
         </style>
     </head>
     <body>
@@ -163,6 +187,7 @@
                     .then(data => {
                         const releasesInfo = formatReleases(data);
                         document.getElementById('releases-info').innerHTML = releasesInfo;
+                        // Cache the fetched data with a timestamp
                         const cachedData = {
                             timestamp: new Date().getTime(),
                             releases: data
@@ -174,23 +199,33 @@
                         document.getElementById('releases-info').innerHTML = 'Failed to load release information.';
                     });
             }
-
+        
             function formatReleases(releases) {
                 let releasesInfo = '';
-                releases.forEach(release => {
+                const latestRelease = releases[0];
+        
+                releases.forEach((release, index) => {
                     let assetsInfo = '';
-
+        
                     if (release.assets.length > 0) {
                         release.assets.forEach(asset => {
                             assetsInfo += `<a href="${asset.browser_download_url}" target="_blank">Download</a>`;
                         });
+
                     } else {
                         assetsInfo = '<p>No assets available for download.</p>';
                     }
-
+        
+                    const isLatest = (index === 0) ? ' <span class="latest">Latest</span>' : '';
+        
                     releasesInfo += `
                         <div class="release">
-                            <h2>${release.name}</h2>
+                            <ul>
+                                <li>
+                                    <h2>${release.name}</h2>
+                                </li>
+                                <li>${isLatest}</li>
+                            </ul>
                             <div id="link-wrap">
                                 <a href="${release.html_url}" target="_blank">View Release</a>
                                 ${assetsInfo}
@@ -198,13 +233,14 @@
                         </div>
                     `;
                 });
+        
                 return releasesInfo;
             }
-
+        
             function loadReleases() {
                 const cachedData = JSON.parse(localStorage.getItem(cacheKey));
                 const now = new Date().getTime();
-
+        
                 if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
                     const releasesInfo = formatReleases(cachedData.releases);
                     document.getElementById('releases-info').innerHTML = releasesInfo;
@@ -212,7 +248,7 @@
                     fetchReleases();
                 }
             }
-
+        
             loadReleases();
         });
     </script>
