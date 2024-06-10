@@ -7,41 +7,33 @@
 <body>
     <div id="content"></div>
     <script>
-        // Google API Client Library betöltése és inicializálása
-        function loadClient() {
-            gapi.client.setApiKey('AIzaSyBDATDgITx1s8Rf8flyBcO8tGP6-BaEkLQ');
-            return gapi.client.load('https://sheets.googleapis.com/$discovery/rest?version=v4')
-                .then(function() { 
-                    console.log('GAPI client loaded for API'); 
-                }, function(err) { 
-                    console.error('Error loading GAPI client for API', err); 
+        const API_KEY = 'AIzaSyBDATDgITx1s8Rf8flyBcO8tGP6-BaEkLQ';
+        const SPREADSHEET_ID = '1UxTVBvXT8Mo9grVpaz0udW3xYaaafkynmUS3notUhwg';  
+        const RANGE = 'SheetOne!A1'; 
+
+        function fetchData() {
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const contentDiv = document.getElementById('content');
+                    const range = data.values;
+                    if (range && range.length > 0) {
+                        contentDiv.innerHTML = 'Project Progress: ' + range[0][0];
+                    } else {
+                        contentDiv.innerHTML = 'No data found.';
+                    }
+                })
+                .catch(error => {
+                    console.error('There was a problem with your fetch operation:', error);
                 });
         }
 
-        // Adatok lekérése a Google Sheets API-tól
-        function execute() {
-            return gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '1UxTVBvXT8Mo9grVpaz0udW3xYaaafkynmUS3notUhwg',
-                range: 'SheetOne!A1',
-            }).then(function(response) {
-                var contentDiv = document.getElementById('content');
-                var range = response.result.values;
-                if (range.length > 0) {
-                    contentDiv.innerHTML = 'Project Progress: ' + range[0][0];
-                } else {
-                    contentDiv.innerHTML = 'No data found.';
-                }
-            }, function(err) { 
-                console.error('Execute error', err); 
-            });
-        }
-
-        gapi.load('client', loadClient);
-
-        // Az oldal betöltése után hajtsuk végre a lekérést
-        window.onload = function() {
-            loadClient().then(execute);
-        };
+        window.onload = fetchData;
     </script>
 </body>
 </html>
