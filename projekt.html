@@ -21,7 +21,7 @@
         // Adatok lekérése a Google Sheets API-tól
         function execute() {
             return gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '395139420008-sba26bf7oprcnpl9n3ehkbq0dic4npog.apps.googleusercontent.com',
+                spreadsheetId: '1UxTVBvXT8Mo9grVpaz0udW3xYaaafkynmUS3notUhwg',
                 range: 'SheetOne!A1',
             }).then(function(response) {
                 var contentDiv = document.getElementById('content');
