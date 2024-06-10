@@ -7,30 +7,49 @@
 <body>
     <div id="content"></div>
     <script>
-        const API_KEY = 'AIzaSyBDATDgITx1s8Rf8flyBcO8tGP6-BaEkLQ';
-        const SPREADSHEET_ID = '1UxTVBvXT8Mo9grVpaz0udW3xYaaafkynmUS3notUhwg';  
-        const RANGE = 'SheetOne!A1'; 
+        const serviceAccountCredentials = {
+            client_email: 'skilled-boulder-374617',
+            private_key: '-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC75rwCrgJDCM03\nZ5y9mNlnXnUOLx53oKeUVXkUogX5ycges9n1w3PsR6PwNGadDE9VF5CsIKOqaMrS\nnzSIfvAx9b9KKdhRWTd088pi4Rr/+GpE/A1lQNEShY4kHPAdimxIWwWbDADnXq2N\n4PddyWy+t9fLEOH/YqQrqj6ZFTz4OZUv9ZA/h9wnwwog8024y+MZsrhvlf0o7IWA\nz2uv1yFMWAhHlo88mIZMftZerF3Yi50kA09cyxtIQLS86ho4CtEtipOMQyPlC2Cn\n5tac252TgxhJR2uEV5Rghnr188KD1UwCUjytx9R6ABrLb2HeYdCvb/1ZuakXGouo\ng91rB+bBAgMBAAECggEAUHmrV0h4foZUAiE1r7w5jHyXjKogleKwMycCUxRrk8ZY\nl9G2jXwW94DdVUDUG/oMNikAFMBr6E22ZEu8X6NiMzuJoHVYiMq5pjTNntjDTBL0\nTLRY9l8yzAh4Tr44FqbU5o5ZUcTr1CwoD8Zkm33rvakWWonSCSORpYPmCIFgmfyu\nI3MFc0pymP3fH0121iTfKTe9UXtseHFVwm2IFLfSkoZUGpo0dDF9uCv5B7W6pygi\n8ZqBtxhv1gL8nNtXecdTF5lCUTR/FFdWHGRlKTxitxc+sLvfAJCguHrYUKT2HYGm\n/C/zwlebZPt2VZeW1aSDezBgyopKW4mjokH9TpFGewKBgQD5JFsbN8k0zAlDGSx3\nh6TE+LgNKAYDkzLhT1bFC660rTHUYIqJ4Su+w+vBSnVIVsvGKUxZIu5m+vv+TMJg\n6DIvmID7pRNAmnrLn+DXqdTMvzP6GW9V+x7y+hKuSqMoJ9yh4DMMCbmq01kYRmAg\nT/oWtJHKjLUod8NR2ecWCYjtswKBgQDBEtR1zXqkkpFb1cSZ06Imq124738s4nQZ\nlf/1bUH2t5yG5m2yZvMAsezizOBgUbMf810uSyvpjEwsEAi/WmjdWYzSDlWKGAT8\n9At46HXFrNTFuhe9Ir8Dt/wfH6LA/62ZF8/HJTeWB5PlFSyMINdqYOju+gbXwKdO\no6v5GwQnuwKBgDHkOeplbYGJKoGpVOJK45AeTp0z2qB0pcfA35tuD3pXBJeHDbc2\nxE/bZCa9BmeKGhyAwK1I9Xzh3fy62mIVnZcybwH1uLlDNjv4tEn71IV79Kis10Lc\nmwIFWiBVCf9MnD4+a3qJqAixcjIORcmyul45oshxDQYhlZeaj1A2cJlJAoGAQfel\nD/r9BG3vrGkFm2lr5bp3c1ChKzzUXkmaAskp2JozqQPiRypVrM8eGP/XShGgGjKU\ni9SzVEDTZdq0omzJl5eZPcwX/e7nBWZ85PrIAppiuIw0wDK3ARZD1n6ApWC2d7Bj\nFa/ppiFAruzlI5u0/mvOKpjS7bStdXkGsT5B1TECgYBRYvtu54gA4C9jn8LoEhCR\noDCljW11qlCnJsjVtuwnY0XLw4WKePWsodb/j0JrSm+z8IuzfKunhIYTQoNLLNM3\nYkfqZq0cTzY1GuGVQI2rVjEibp0H49bgUP6b9fwllwzgmzHonNEK/Co8gsCQh1ai\n+Q9G++iyJUkteAk2FuQe2Q==\n-----END PRIVATE KEY-----\n'
+        };
 
+        // Az API kulcs
+        const API_KEY = 'AIzaSyBDATDgITx1s8Rf8flyBcO8tGP6-BaEkLQ';
+
+        // A táblázat azonosítója és a tartomány
+        const SPREADSHEET_ID = '1UxTVBvXT8Mo9grVpaz0udW3xYaaafkynmUS3notUhwg';
+        const RANGE = 'SheetOne!A1';
+
+        // Fetch adatokat a Google Sheets API-ból
         function fetchData() {
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const contentDiv = document.getElementById('content');
-                    const range = data.values;
-                    if (range && range.length > 0) {
-                        contentDiv.innerHTML = 'Project Progress: ' + range[0][0];
-                    } else {
-                        contentDiv.innerHTML = 'No data found.';
-                    }
-                })
-                .catch(error => {
-                    console.error('There was a problem with your fetch operation:', error);
-                });
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`, {
+                headers: {
+                    'Authorization': `Bearer ${getAccessToken()}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const contentDiv = document.getElementById('content');
+                const range = data.values;
+                if (range && range.length > 0) {
+                    contentDiv.innerHTML = 'Project Progress: ' + range[0][0];
+                } else {
+                    contentDiv.innerHTML = 'No data found.';
+                }
+            })
+            .catch(error => {
+                console.error('There was a problem with your fetch operation:', error);
+            });
+        }
+
+        // Token lekérdezése az API hitelesítéshez
+        function getAccessToken() {
+            const jwt = require('jsonwebtoken');
+            return jwt.sign({}, serviceAccountCredentials.private_key, {
+                audience: 'https://sheets.googleapis.com/',
+                issuer: serviceAccountCredentials.client_email,
+                expiresIn: '1h',
+                algorithm: 'RS256'
+            });
         }
 
         window.onload = fetchData;
