@@ -43,14 +43,11 @@
 
         // Token lekérdezése az API hitelesítéshez
         function getAccessToken() {
-            const jwt = require('jsonwebtoken');
-            return jwt.sign({}, serviceAccountCredentials.private_key, {
-                audience: 'https://sheets.googleapis.com/',
-                issuer: serviceAccountCredentials.client_email,
-                expiresIn: '1h',
-                algorithm: 'RS256'
-            });
+            const privateKey = `-----BEGIN PRIVATE KEY-----\n${YOUR_PRIVATE_KEY}\n-----END PRIVATE KEY-----\n`;
+            const jwtToken = KJUR.jws.JWS.sign(null, {alg: 'RS256', privateKey});
+            return jwtToken;
         }
+
 
         window.onload = fetchData;
     </script>
