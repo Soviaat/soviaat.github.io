@@ -43,7 +43,7 @@
 
         // Token lekérdezése az API hitelesítéshez
         function getAccessToken() {
-            const privateKey = `-----BEGIN PRIVATE KEY-----\n${YOUR_PRIVATE_KEY}\n-----END PRIVATE KEY-----\n`;
+            const privateKey = `-----BEGIN PRIVATE KEY-----\n${serviceAccountCredentials.private_key}\n-----END PRIVATE KEY-----\n`;
             const jwtToken = KJUR.jws.JWS.sign(null, {alg: 'RS256', privateKey});
             return jwtToken;
         }
