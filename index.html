@@ -37,7 +37,8 @@
                 height: 100vh;
                 width: auto;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+                gap: 30px;
                 align-items: center;
                 justify-content: center;
             }
@@ -159,25 +160,51 @@
                 align-items: center;
                 justify-content: center;
             }
+
+            #repo h1 {
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-        <div class="release-container">
-            <h1>VexSoundPause</h1>
-            <div id="releases-info" class="releases-info">
+            <div class="release-container" id="release-container">
+            <!-- <div id="releases-info" class="releases-info">
                     Loading latest release...
             </div>
+            <div id="releases-info" class="releases-info">
+
+            </div> -->
         </div>
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const repoOwner = 'soviaat';
-            const repoName = 'VexSoundPause';
+            const repositories = [
+                { owner: repoOwner, name: 'VexSoundPause' },
+                { owner: repoOwner, name: 'OBSAutoBackup'}
+            ];
             const cacheKey = 'github-releases';
             const cacheDuration = 60 * 60 * 1000;
 
-            function fetchReleases() {
-                fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
+            function createContainers(repo) {
+                const container = document.createElement('div');
+                container.className = 'release-container';
+                container.id = `container-${repo.name}`;
+                container.innerHTML =
+                `
+                <div id="repo">
+                    <h1>${repo.name}</h1>
+                    <div id="releases-info-${repo.name}" class="releases-info">
+                        Loading latest release...    
+                    </div>
+                </div>`
+
+                document.getElementById("release-container").appendChild(container);
+            }
+
+            function fetchReleases(repo) {
+                const { owner, name } = repo;
+                fetch(`https://api.github.com/repos/${repoOwner}/${name}/releases`)
                     .then(response => {
                         if (response.status === 403) {
                             throw new Error('Rate limit exceeded. Please try again maybe in an hour.');
@@ -185,14 +212,14 @@
                         return response.json();
                     })
                     .then(data => {
-                        const releasesInfo = formatReleases(data);
-                        document.getElementById('releases-info').innerHTML = releasesInfo;
+                        const releasesInfo = formatReleases(data, repo);
+                        document.getElementById(`releases-info-${name}`).innerHTML = releasesInfo;
                         // Cache the fetched data with a timestamp
                         const cachedData = {
                             timestamp: new Date().getTime(),
                             releases: data
                         };
-                        localStorage.setItem(cacheKey, JSON.stringify(cachedData));
+                        localStorage.setItem(cacheKey + name, JSON.stringify(cachedData));
                     })
                     .catch(error => {
                         console.error('Error fetching release data:', error);
@@ -200,8 +227,9 @@
                     });
             }
         
-            function formatReleases(releases) {
+            function formatReleases(releases, repo) {
                 let releasesInfo = '';
+                const { name } = repo;
                 const latestRelease = releases[0];
         
                 releases.forEach((release, index) => {
@@ -238,15 +266,18 @@
             }
         
             function loadReleases() {
-                const cachedData = JSON.parse(localStorage.getItem(cacheKey));
-                const now = new Date().getTime();
-        
-                if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
-                    const releasesInfo = formatReleases(cachedData.releases);
-                    document.getElementById('releases-info').innerHTML = releasesInfo;
-                } else {
-                    fetchReleases();
-                }
+                repositories.forEach(repo => {
+                    createContainers(repo);
+                    const cachedData = JSON.parse(localStorage.getItem(cacheKey + repo.name));
+                    const now = new Date().getTime();
+            
+                    if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
+                        const releasesInfo = formatReleases(cachedData.releases, repo);
+                        document.getElementById(`releases-info-${repo.name}`).innerHTML = releasesInfo;
+                    } else {
+                        fetchReleases(repo);
+                    }
+                })
             }
         
             loadReleases();
