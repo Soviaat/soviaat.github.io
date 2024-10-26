@@ -48,7 +48,7 @@ body {
     width: min-content;
     text-decoration: none;
     color: white;
-    font-size: 2dvw;
+    font-size: 2em;
     transition: text-decoration .5s, color .4s;
     position: relative;
 }
