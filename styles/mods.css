@@ -27,6 +27,7 @@ body {
     width: auto;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 30px;
     align-items: center;
     justify-content: center;
@@ -35,10 +36,9 @@ body {
 .releases-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 30em;
+    width: max-content;
     background-color: var(--primary);
-    padding: 10px;
+    padding: 1.5em;
     border-radius: .5em;
     box-shadow: 0 10px 0px #000;
     transition: box-shadow .5s ease, transform .4s ease, background-color .5s, width .3s;
@@ -49,6 +49,11 @@ body {
     background-color: var(--secondary);
     transform: translateY(10px);
     outline: 1px solid var(--primary);
+}
+
+#repo {
+    display: flex;
+    flex-direction: column;
 }
 
 .release {
@@ -103,6 +108,10 @@ h2:hover::after {
     transform: translateY(-5px);
 }
 
+#link-wrap {
+    display: flex;
+}
+
 .release > #link-wrap > a {
     user-select: none;
     color: white;
@@ -113,18 +122,18 @@ h2:hover::after {
     position: relative;
 }
 
-#link-wrap > a:first-child {
+.release > #link-wrap > a:first-child {
     margin-right: 10px;
+    width: max-content;
 }
 
-#link-wrap:last-of-type {
+/* #link-wrap:last-of-type {
     margin-bottom: 15px;
-}
+} */
 
 .release > #link-wrap > a:last-child {
     background-color: var(--tertiary);
     width: max-content;
-    margin-bottom: 20px;
 }
 
 .release > #link-wrap > a:last-child:hover,
@@ -141,7 +150,8 @@ h2:hover::after {
 
 ul {
     list-style-type: none;
-    margin: 0;padding: 0;
+    margin: 0;
+    padding: 0;
 } 
 
 li {
@@ -156,12 +166,29 @@ li {
 
 @media screen and (max-width: 885px) {
     .release-container {
-        flex-direction: column;
+        height: max-content;
     }
 }
 
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 450px) {
     .releases-info {
-        width: 28em;
+        margin: 2em;
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 403px) {
+    #link-wrap {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .release > #link-wrap > a:last-child {
+        width: 80%;
+        text-align: center;
+    }
+    .release > #link-wrap > a:first-child {
+        width: 80%;
+        text-align: center;
     }
 }
