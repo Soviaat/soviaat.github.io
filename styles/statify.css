@@ -36,6 +36,7 @@ body {
 }
 
 .work-in-progress {
+    user-select: none;
     position: fixed;
     font-size: 15em;
     transform: rotate(-30deg) translateY(300px);
