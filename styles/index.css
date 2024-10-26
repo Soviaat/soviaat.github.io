@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --primary: #3d3d3d;
+    --secondary: #1e1e1e;
+    --tertiary: #273ac3;
+    --hover: #929cf3;
+    --gray: #6c6c6c;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+}
+
+body {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-family: "Quicksand";
+    background-color: var(--secondary);
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    padding: 1.5em;
+    gap: 10px;
+    background-color: var(--primary);
+    border-radius: .5em;
+    box-shadow: 0 5px 0px #000;
+    transition: box-shadow .5s ease, transform .4s ease, background-color .5s, width .3s;
+}
+
+.links:hover {
+    box-shadow: 0 0 0 #000;
+    background-color: var(--secondary);
+    transform: translateY(5px);
+    outline: 1px solid var(--primary);
+}
+
+.links > .link-container > a {
+    width: min-content;
+    text-decoration: none;
+    color: white;
+    font-size: 2dvw;
+    transition: text-decoration .5s, color .4s;
+    position: relative;
+}
+
+.links > .link-container > a:hover {
+    color: var(--hover);
+}
+
+.links > .link-container >  a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2.5px;
+    border-radius: 2em;
+    bottom: 0px;
+    left: 0;
+    background-color: var(--hover);
+    transform-origin: bottom right; 
+    transition: transform 0.25s ease-out;
+}
+
+.links > .link-container >  a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* h2 {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: fit-content;
+    transition: text-decoration .5s;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    border-radius: 2em;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+h2:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+} */

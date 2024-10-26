@@ -1,123 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Soviaat's releases.">
-        <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-        <meta name="theme-color" content="#ffad3b">
-        <link rel="stylesheet" href="styles/mods.css">
-        <title>Soviaat's Mods</title>
+        <link rel="stylesheet" href="/styles/index.css">
+        <title>Soviaat.dev | Home</title>
     </head>
     <body>
-        <div class="release-container" id="release-container">
-        </div>
+        <div class="links" id="linkList"></div>
     </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const repoOwner = 'soviaat';
-            const repositories = [
-                { owner: repoOwner, name: 'Statify'},
-                { owner: repoOwner, name: 'VexSoundPause' }
-            ];
-            const cacheKey = 'github-releases';
-            const cacheDuration = 60 * 60 * 1000;
-
-            function createContainers(repo) {
-                const container = document.createElement('div');
-                container.className = 'release-container';
-                container.id = `container-${repo.name}`;
-                container.innerHTML =
-                `
-                <div id="repo">
-                    <h1>${repo.name}</h1>
-                    <div id="releases-info-${repo.name}" class="releases-info">
-                        Loading latest release...    
-                    </div>
-                </div>`
-
-                document.getElementById("release-container").appendChild(container);
-            }
-
-            function fetchReleases(repo) {
-                const { owner, name } = repo;
-                fetch(`https://api.github.com/repos/${repoOwner}/${name}/releases`)
-                    .then(response => {
-                        if (response.status === 403) {
-                            throw new Error('Rate limit exceeded. Please try again maybe in an hour.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const releasesInfo = formatReleases(data, repo);
-                        document.getElementById(`releases-info-${name}`).innerHTML = releasesInfo;
-                        // Cache the fetched data with a timestamp
-                        const cachedData = {
-                            timestamp: new Date().getTime(),
-                            releases: data
-                        };
-                        localStorage.setItem(cacheKey + name, JSON.stringify(cachedData));
-                    })
-                    .catch(error => {
-                        console.error('Error fetching release data:', error);
-                        document.getElementById('releases-info').innerHTML = 'Failed to load release information.';
-                    });
-            }
-        
-            function formatReleases(releases, repo) {
-                let releasesInfo = '';
-                const { name } = repo;
-                const latestRelease = releases[0];
-        
-                releases.forEach((release, index) => {
-                    let assetsInfo = '';
-        
-                    if (release.assets.length > 0) {
-                        release.assets.forEach(asset => {
-                            assetsInfo += `<a href="${asset.browser_download_url}" target="_blank">Download</a>`;
-                        });
-
-                    } else {
-                        assetsInfo = '<p>No assets available for download.</p>';
-                    }
-        
-                    const isLatest = (index === 0) ? ' <span class="latest">Latest</span>' : '';
-        
-                    releasesInfo += `
-                        <div class="release">
-                            <ul>
-                                <li>
-                                    <h2>${release.name}</h2>
-                                </li>
-                                <li>${isLatest}</li>
-                            </ul>
-                            <div id="link-wrap">
-                                <a href="${release.html_url}" target="_blank">View Release</a>
-                                ${assetsInfo}
-                            </div>
-                        </div>
-                    `;
-                });
-        
-                return releasesInfo;
-            }
-        
-            function loadReleases() {
-                repositories.forEach(repo => {
-                    createContainers(repo);
-                    const cachedData = JSON.parse(localStorage.getItem(cacheKey + repo.name));
-                    const now = new Date().getTime();
-            
-                    if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
-                        const releasesInfo = formatReleases(cachedData.releases, repo);
-                        document.getElementById(`releases-info-${repo.name}`).innerHTML = releasesInfo;
-                    } else {
-                        fetchReleases(repo);
-                    }
-                })
-            }
-        
-            loadReleases();
-        });
-    </script>
+    <script src="script.js"></script>
 </html>
