@@ -34,3 +34,10 @@ body {
     background-color: var(--tertiary);
     border-radius: 20px;
 }
+
+.work-in-progress {
+    position: fixed;
+    font-size: 15em;
+    transform: rotate(-30deg) translateY(300px);
+    color: rgba(40, 40, 40, 0.6);
+}
