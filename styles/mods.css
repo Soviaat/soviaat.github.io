@@ -10,7 +10,7 @@
 
 .outlined {
     outline: 3px solid #e18830;
-    transition: outline .3s ease;
+    transition: outline .3s;
     margin: 4px;
 }
 
@@ -47,7 +47,7 @@ body {
     padding: 1.5em;
     border-radius: .5em;
     box-shadow: 0 10px 0px #000;
-    transition: box-shadow .5s ease, transform .4s ease, background-color .5s, width .3s;
+    transition: box-shadow .5s ease, transform .4s ease, background-color .5s, width .3s,  outline .4s ease-in-out;
 }
 
 .releases-info:hover {
