@@ -59,7 +59,7 @@
                     })
                     .then(data => {
                         const releasesInfo = formatReleases(data, repo);
-                        document.getElementById(`releases-info-${name}`).innerHTML = releasesInfo;
+                        document.getElementById(`releases-info-${(name).toLowerCase()}`).innerHTML = releasesInfo;
                         const cachedData = {
                             timestamp: new Date().getTime(),
                             releases: data
