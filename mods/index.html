@@ -116,23 +116,24 @@
                 })
             }
 
+            
+            loadReleases();
+            
             function highlightByQuery() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const targetId = urlParams.get('id')?.toLowerCase();
                 
-                document.querySelectorAll(`.releases-info-${targetId}`).forEach(e => e.classList.remove('outlined'));
+                document.querySelectorAll(`.releases-info`).forEach(e => e.classList.remove('outlined'));
                 if (targetId) {
                     const targetElement = document.getElementById(`releases-info-${targetId}`);
                     if(targetElement) {
-                        targetElement.classList.add('outlined');
+                        targetElement.classList.add("outlined");
                     }
                 }
             }
-
+    
             highlightByQuery();
             window.addEventListener("popstate", highlightByQuery);
-        
-            loadReleases();
         });
-    </script>
+        </script>
 </html>
