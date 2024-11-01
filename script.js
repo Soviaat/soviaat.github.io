@@ -12,7 +12,7 @@ window.onload = function() {
             linkContainer.className = "link-container";
 
             const link = document.createElement("a");
-            link.href = `./${f}/`
+            link.href = `./${f}`
             link.textContent = `${f.charAt(0).toUpperCase() + f.slice(1)}`
             link.style.display = "block";
 

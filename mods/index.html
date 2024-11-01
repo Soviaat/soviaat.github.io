@@ -15,6 +15,15 @@
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const currentSearch = window.location.search;
+
+            if (currentPath.endsWith('/')) {
+                const newPath = currentPath.slice(0, -1) + currentSearch;
+
+                window.history.replaceState(null, '', newPath);
+            }
+
             const repoOwner = 'soviaat';
             const repositories = [
                 { owner: repoOwner, name: 'Statify'},
@@ -118,7 +127,7 @@
 
             
             loadReleases();
-            
+
             function highlightByQuery() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const targetId = urlParams.get('id')?.toLowerCase();
