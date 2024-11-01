@@ -26,13 +26,13 @@
             function createContainers(repo) {
                 const container = document.createElement('div');
                 container.className = 'release-container';
-                container.id = `container-${repo.name}`;
+                container.id = `container-${(repo.name).toLowerCase()}`;
                 container.innerHTML =
                 `
                 <div id="repo">
                     <h1>${repo.name}</h1>
-                    <div id="releases-info-${repo.name}" class="releases-info">
-                        Loading latest release...    
+                    <div id="releases-info-${(repo.name).toLowerCase()}" class="releases-info">
+                        Loading latest release...
                     </div>
                 </div>`
 
@@ -51,7 +51,6 @@
                     .then(data => {
                         const releasesInfo = formatReleases(data, repo);
                         document.getElementById(`releases-info-${name}`).innerHTML = releasesInfo;
-                        // Cache the fetched data with a timestamp
                         const cachedData = {
                             timestamp: new Date().getTime(),
                             releases: data
@@ -110,12 +109,28 @@
             
                     if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
                         const releasesInfo = formatReleases(cachedData.releases, repo);
-                        document.getElementById(`releases-info-${repo.name}`).innerHTML = releasesInfo;
+                        document.getElementById(`releases-info-${(repo.name).toLowerCase()}`).innerHTML = releasesInfo;
                     } else {
                         fetchReleases(repo);
                     }
                 })
             }
+
+            function highlightByQuery() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetId = urlParams.get('id')?.toLowerCase();
+                
+                document.querySelectorAll(`.releases-info-${targetId}`).forEach(e => e.classList.remove('outlined'));
+                if (targetId) {
+                    const targetElement = document.getElementById(`releases-info-${targetId}`);
+                    if(targetElement) {
+                        targetElement.classList.add('outlined');
+                    }
+                }
+            }
+
+            highlightByQuery();
+            window.addEventListener("popstate", highlightByQuery);
         
             loadReleases();
         });
