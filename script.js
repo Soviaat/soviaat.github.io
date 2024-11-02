@@ -32,16 +32,16 @@ window.onload = function() {
 
     createLinks();
 
-    const repoOwner = 'soviaat';
     const repositories = [
         { name: 'Statify' },
         { name: 'VexSoundPause' }
     ];
 
     function createList() {
+        const listContainer = document.createElement("div");
+        listContainer.id = "repo-dropdown";
+        listContainer.className = "hidden";
         const list = document.createElement("ul");
-        list.className = "hidden";
-        list.id = "repo-dropdown";
         repositories.forEach(r => {        
             list.innerHTML += 
             `<a href="/mods?id=${r.name}" target="_blank">
@@ -49,23 +49,25 @@ window.onload = function() {
             </a>`;
         });
 
-        document.getElementById("main").appendChild(list);
+        listContainer.appendChild(list);
+
+        document.getElementById("main").appendChild(listContainer);
     }
 
     createList();
 
     
     const plus = document.getElementById("plus-btn");
-    const list = document.getElementById("repo-dropdown");
+    const listContainer = document.getElementById("repo-dropdown");
     plus.addEventListener("click", () => {
-        if(list.classList.contains("hidden")) {
+        if(listContainer.classList.contains("hidden")) {
             plus.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"/></svg>';
-            list.classList.remove("hidden");
-            list.classList.toggle("shown");
+            listContainer.classList.remove("hidden");
+            listContainer.classList.toggle("shown");
         } else {
             plus.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M480-344 240-584l47.33-47.33L480-438.67l192.67-192.66L720-584 480-344Z"/></svg>';
-            list.classList.remove("shown");
-            list.classList.toggle("hidden");
+            listContainer.classList.remove("shown");
+            listContainer.classList.toggle("hidden");
         }
     });
 
@@ -77,6 +79,7 @@ window.onload = function() {
             writeOn(welcomeElement, savedName);
         } else {
             const input = document.createElement("input");
+            input.autocomplete = "off"
             input.type = "text";
             input.placeholder = "Your name";
             input.id = "nameInput";

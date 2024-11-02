@@ -89,13 +89,11 @@ body {
 }
 
 .hidden {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
+    display: none;
 }
 
 #repo-dropdown {
+    margin: 10px 0;
     user-select: none;
     padding: 0;
     list-style: none;
@@ -104,7 +102,7 @@ body {
     border-radius: .3em;
 }
 
-#repo-dropdown > a {
+#repo-dropdown > ul > a {
     position: relative;
     line-height: 2.5em;
     width: min-content;
@@ -113,7 +111,7 @@ body {
     z-index: 2;
 }
 
-#repo-dropdown > a > li {
+#repo-dropdown > ul > a > li {
     padding: 5px 20px;
     display: block;
     color: white;
@@ -123,7 +121,7 @@ body {
     transition: background-color .3s;
 }
 
-#repo-dropdown > a > li::before {
+#repo-dropdown > ul > a > li::before {
     content: '';
     position: absolute;
     top: 0;
@@ -136,23 +134,28 @@ body {
     transition: width 0.3s ease;
 }
 
-#repo-dropdown > a:first-child > li::before {
+#repo-dropdown > ul > a:first-child > li::before {
     border-radius: .3em .3em 0 0;
 }
 
-#repo-dropdown > a:last-child > li::before {
+#repo-dropdown > ul > a:last-child > li::before {
     border-radius: 0 0 .3em .3em;
 }
 
-#repo-dropdown > a > li:hover::before {
+#repo-dropdown > ul > a > li:hover::before {
     width: 100%;
+}
+
+#repo-dropdown > ul {
+    padding: 0;
+    margin: 0;
 }
 
 .shown {
     position: absolute;
     width: max-content;
     height: max-content;
-    opacity: 1;
+    display: block;
 }
 
 .plus {
