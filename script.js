@@ -44,7 +44,7 @@ window.onload = function() {
         list.id = "repo-dropdown";
         repositories.forEach(r => {        
             list.innerHTML += 
-            `<a href="/mods?id=${r.name}">
+            `<a href="/mods?id=${r.name}" target="_blank">
                 <li>${r.name}</li>
             </a>`;
         });

@@ -88,6 +88,7 @@ body {
 }
 
 #repo-dropdown {
+    user-select: none;
     padding: 0;
     list-style: none;
     background-color: var(--primary);
@@ -124,7 +125,6 @@ body {
     height: 100%;
     background-color: var(--hover);
     z-index: -1;
-    border-radius: .3em;
     transition: width 0.3s ease;
 }
 
