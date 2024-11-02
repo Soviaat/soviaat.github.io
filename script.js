@@ -34,7 +34,7 @@ window.onload = function() {
 
     const repoOwner = 'soviaat';
     const repositories = [
-        { name: 'Statify'},
+        { name: 'Statify' },
         { name: 'VexSoundPause' }
     ];
 
@@ -68,6 +68,55 @@ window.onload = function() {
             list.classList.toggle("hidden");
         }
     });
+
+    function loadWelcome() {
+        const welcomeElement = document.getElementById("welcome");
+        const savedName = localStorage.getItem("username");
+
+        if (savedName) {
+            writeOn(welcomeElement, savedName);
+        } else {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "Your name";
+            input.id = "nameInput";
+
+            welcomeElement.textContent = "Welcome, ";
+            welcomeElement.appendChild(input);
+
+            input.addEventListener('keypress', (e) => {
+                if (e.key === "Enter" && input.value.trim() !== '') {
+                    const username = input.value.trim()
+                    localStorage.setItem("username", username);
+
+                    input.classList.add("shrink");
+
+                    input.addEventListener("transitionend", () => {
+                        welcomeElement.removeChild(input);
+                        writeOn(welcomeElement, username);
+                    });
+                }
+            });
+        }
+    }
+
+    function writeOn(element, text) {
+        element.textContent = `Welcome, `;
+        const span = document.createElement("span");
+        span.classList.add("typing");
+        element.appendChild(span);
+
+        let i = 0;
+        const typingInterval = setInterval(() => {
+            span.textContent += text[i];
+            i++;
+            if (i === text.length) {
+                clearInterval(typingInterval);
+            }
+        }, 150);
+    }
+
+    loadWelcome();
 };
 
 
