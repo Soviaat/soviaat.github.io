@@ -44,6 +44,10 @@ body {
     outline: 1px solid var(--primary);
 }
 
+.link-container:hover > .plus {
+    background-color: var(--primary);
+}
+
 .links > .link-container > a {
     width: min-content;
     text-decoration: none;
@@ -75,3 +79,98 @@ body {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+.hidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+#repo-dropdown {
+    padding: 0;
+    list-style: none;
+    background-color: var(--primary);
+    font-size: 1.5em;
+    border-radius: .3em;
+}
+
+#repo-dropdown > a {
+    position: relative;
+    line-height: 2.5em;
+    width: min-content;
+    text-decoration: none;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+#repo-dropdown > a > li {
+    padding: 5px 20px;
+    display: block;
+    color: white;
+    border-radius: .3em;
+    position: relative;
+    z-index: 1;
+    transition: background-color .3s;
+}
+
+#repo-dropdown > a > li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--hover);
+    z-index: -1;
+    border-radius: .3em;
+    transition: width 0.3s ease;
+}
+
+#repo-dropdown > a:first-child > li::before {
+    border-radius: .3em .3em 0 0;
+}
+
+#repo-dropdown > a:last-child > li::before {
+    border-radius: 0 0 .3em .3em;
+}
+
+#repo-dropdown > a > li:hover::before {
+    width: 100%;
+}
+
+.shown {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    opacity: 1;
+}
+
+.plus {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--gray);
+    border-radius: .2em;
+    margin: 0;
+    padding: 3px;
+    transition: background-color .3s;
+}
+
+#mods {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+/* .plus::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: red;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    right: 80px;
+    z-index: 20;
+} */
