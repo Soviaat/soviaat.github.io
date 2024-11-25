@@ -204,7 +204,7 @@ body {
 }
 
 .mobile {
-    content: url("/styles/menu-icon-new.svg");
+    content: url("https://github.com/Soviaat/soviaat.github.io/blob/main/styles/header.gif");
     margin: 0 10px;
     height: 2.7em;
     padding: 10px;
