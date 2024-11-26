@@ -106,7 +106,7 @@ body {
     border-radius: .5em;
     overflow: hidden;
     display: flex;
-    height: 90dvh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -204,7 +204,7 @@ body {
 }
 
 .mobile {
-    content: url("https://github.com/Soviaat/soviaat.github.io/blob/main/styles/header.gif");
+    content: url("/styles/menu-icon-new.svg");
     margin: 0 10px;
     height: 2.7em;
     padding: 10px;
