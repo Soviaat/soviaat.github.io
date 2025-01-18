@@ -60,9 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(cookieKey, "true");
     });
 
-    list = [help, home, downloadLink]
-    target = [helpContainer, top, downloadContainer]
-    scrollToElement(list, target);
+    linkList = [
+        [help, helpContainer],
+        [downloadLink, downloadContainer],
+        [home, top]
+    ]
+
+    linkList.forEach(([link, container]) => {
+        link.addEventListener("click", () => {
+            container.scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    });
     
     
     this.window.addEventListener("resize", () => {
