@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const loadingBar = document.querySelector(".loading-bar");
     const percent = document.getElementById("percent");
     loadingBar.style.width = "100%";
@@ -34,7 +34,6 @@ window.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }, 4350);
     
-    const top = document.querySelector(".top");
     const popup = document.getElementById("cookie-popup");
     const closeBtn = document.getElementById("close-cookie-popup");
     const cookieKey = "cookie-popup-dismissed";
@@ -43,9 +42,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".slider img");
     const slider = document.querySelector(".slider");
     const install = document.querySelector(".install");
+    
+    const help = document.querySelector(".help-link");
+    const helpContainer = document.querySelector(".help-container");
     const downloadLink = document.querySelector(".download-link");
     const downloadContainer = document.querySelector(".download-container");
     const home = document.querySelector(".home-link");
+    const top = document.querySelector(".top");
     
     
     if(!localStorage.getItem(cookieKey)) {
@@ -56,19 +59,10 @@ window.addEventListener("DOMContentLoaded", () => {
         popup.style.display = "none";
         localStorage.setItem(cookieKey, "true");
     });
-    
-    downloadLink.addEventListener("click", () => {
-        downloadContainer.scrollIntoView({
-            behavior: "smooth"
-        });
-    });
-    
-    home.addEventListener("click", () => {
-        top.scrollIntoView({
-            behavior: "smooth"
-        });
-    });
-    
+
+    list = [help, home, downloadLink]
+    target = [helpContainer, top, downloadContainer]
+    scrollToElement(list, target);
     
     
     this.window.addEventListener("resize", () => {
@@ -130,11 +124,13 @@ window.addEventListener("DOMContentLoaded", () => {
     
     const codeElements = [
         ["fabric", "https://fabricmc.net/"],
-        ["fabric-download", "https://www.curseforge.com/minecraft/mc-mods/fabric-api/files/5848117"],
+        ["fabric-download", "https://www.curseforge.com/minecraft/mc-mods/fabric-api/files/6036511"],
         ["fabric-loader-download", "https://github.com/FabricMC/fabric-loader/releases/tag/0.16.9"],
         ["luckey", "https://twitch.tv/luckeY"],
         ["statify", "https://soviaat.dev/mods?id=statify"],
-        ["gitrepo", "https://github.com/Soviaat/Statify"]
+        ["gitrepo", "https://github.com/Soviaat/Statify"],
+        ["readme", "https://github.com/Soviaat/Statify/blob/master/README.md"],
+        ["git-issue", "https://github.com/Soviaat/Statify/issues/new"]
     ]
     
     codeElements.forEach(([id, link]) => {
@@ -186,4 +182,16 @@ function log(string) {
         "color: #2690ec; font-weight: bold;", // Style for "[Statify]"
         "color: inherit;"
     )
+}
+
+function scrollToElement(list, targetList) {
+    for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener("click", () => {
+            for (let i = 0; i < targetList.length; i++) {
+                targetList[i].scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        });
+    }
 }
