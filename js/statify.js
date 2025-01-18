@@ -1,4 +1,39 @@
 window.addEventListener("load", function() {
+    const loadingBar = document.querySelector(".loading-bar");
+    const percent = document.getElementById("percent");
+    loadingBar.style.width = "100%";
+
+    function getCurrentWidthPercentage(element) {
+        const elementWidth = element.getBoundingClientRect().width;
+        const parentWidth = element.parentElement.getBoundingClientRect().width;
+
+        return (elementWidth / parentWidth) * 100;
+    }
+
+    function trackWidthDuringTransition(element, target) {
+        const updateWidth = () => {
+            const currentWidth = getCurrentWidthPercentage(element);
+            requestAnimationFrame(updateWidth);
+            target.innerText = Math.floor(currentWidth) + "%";
+            if(Math.floor(currentWidth) === 100) {
+                cancelAnimationFrame(updateWidth);
+                log("ended");
+            }
+        }
+
+        requestAnimationFrame(updateWidth);
+    }
+
+    trackWidthDuringTransition(loadingBar, percent);
+    setTimeout(() => {
+        const loadingContainer = document.querySelector(".loading-container");
+        loadingContainer.style.opacity = '0';
+
+        setTimeout(() => {
+            loadingContainer.style.display = "none";
+        }, 1000);
+    }, 4350);
+
     const top = document.querySelector(".top");
     const popup = document.getElementById("cookie-popup");
     const closeBtn = document.getElementById("close-cookie-popup");

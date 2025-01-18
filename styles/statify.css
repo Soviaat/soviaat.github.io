@@ -57,6 +57,12 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-body {
     background-color: var(--background);
     font-family: "Quicksand";
     transition: padding .2s;
@@ -67,6 +73,7 @@ body {
     display: flex;
     margin: 0;
     gap: 1em;
+    opacity: 1;
 }
 
 .main-container {
@@ -365,7 +372,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    body {
+    .main-body {
         padding: 1em 0;
     }
 
@@ -414,7 +421,7 @@ body {
     }
 
     .navigation.open {
-        font-size: .625em;
+        font-size: .650em;
     }
 }
 
@@ -659,3 +666,44 @@ code {
     margin: 0;
     height: 0;
 }
+
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.571);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease;
+    opacity: 1;
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(30%, 2vw, 20%);
+    height: 10px;
+}
+
+.loading-bar {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    font-family: "Quicksand", serif;
+    transition: width 4s cubic-bezier(0.32, 0.75, 0, 0.99);
+    justify-content: center;
+    border-radius: .3em;
+    line-height: 3em;
+    font-size: clamp(1em, 2vw, 2em);
+    color: white;
+    display: flex;
+    height: 100%;
+    width: .3em;
+}
+
