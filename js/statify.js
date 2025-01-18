@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("DOMContentLoaded", () => {
     const loadingBar = document.querySelector(".loading-bar");
     const percent = document.getElementById("percent");
     loadingBar.style.width = "100%";
@@ -33,7 +33,7 @@ window.addEventListener("load", function() {
             loadingContainer.style.display = "none";
         }, 1000);
     }, 4350);
-
+    
     const top = document.querySelector(".top");
     const popup = document.getElementById("cookie-popup");
     const closeBtn = document.getElementById("close-cookie-popup");
@@ -46,7 +46,7 @@ window.addEventListener("load", function() {
     const downloadLink = document.querySelector(".download-link");
     const downloadContainer = document.querySelector(".download-container");
     const home = document.querySelector(".home-link");
-
+    
     
     if(!localStorage.getItem(cookieKey)) {
         popup.style.display = "flex";
@@ -62,15 +62,15 @@ window.addEventListener("load", function() {
             behavior: "smooth"
         });
     });
-
+    
     home.addEventListener("click", () => {
         top.scrollIntoView({
             behavior: "smooth"
         });
     });
-
-
-
+    
+    
+    
     this.window.addEventListener("resize", () => {
         if(window.innerWidth <= 600) {
             nav.classList.add("hidden");
@@ -79,13 +79,13 @@ window.addEventListener("load", function() {
             nav.classList.remove("hidden");
             menuIcon.style.display = "none";
         }
-
+    
         if(window.innerWidth > 600) {
             nav.classList.remove("open");
         }
-
+    
     });
-
+    
     if(window.innerWidth <= 600) {
         nav.classList.add("hidden");
         menuIcon.style.display = "flex";
@@ -93,7 +93,7 @@ window.addEventListener("load", function() {
         nav.classList.remove("hidden");
         menuIcon.style.display = "none";
     }
-
+    
     menuIcon.addEventListener("click", () => {
         if(nav.classList.contains("hidden") ) {
             nav.classList.remove("hidden");
@@ -103,18 +103,18 @@ window.addEventListener("load", function() {
             nav.classList.remove("open");
         }
     });
-
+    
     document.addEventListener("click", (e) => {
         if(!nav.contains(e.target) && !menuIcon.contains(e.target) && nav.classList.contains("open")) {
             nav.classList.remove("open");
             nav.classList.add("hidden");
         }
     });
-
+    
     /* Auto-scroll*/
-
+    
     let i = 0;
-
+    
     const autoScroll = () => {
         i = (i + 1) % slides.length;
     
@@ -127,7 +127,7 @@ window.addEventListener("load", function() {
     };
     
     setInterval(autoScroll, 3000);
-
+    
     const codeElements = [
         ["fabric", "https://fabricmc.net/"],
         ["fabric-download", "https://www.curseforge.com/minecraft/mc-mods/fabric-api/files/5848117"],
@@ -136,7 +136,7 @@ window.addEventListener("load", function() {
         ["statify", "https://soviaat.dev/mods?id=statify"],
         ["gitrepo", "https://github.com/Soviaat/Statify"]
     ]
-
+    
     codeElements.forEach(([id, link]) => {
         const target = this.document.getElementById(id);
         if (target) {
@@ -145,11 +145,10 @@ window.addEventListener("load", function() {
             log(`Element with the id of \`${id}\` could not be found.`);
         }
     });
-
+    
     install.addEventListener("click", () => {
         window.open("https://soviaat.dev/mods?id=Statify");
     });
-
 });
 
 function addTooltip(target, CSSelement, link) {
