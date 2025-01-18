@@ -198,3 +198,45 @@ li {
         text-align: center;
     }
 }
+
+.cookie-popup {
+    position: fixed;
+    flex-direction: column;
+    top: 2em;
+    left: 50%;
+    transform: translate(-50%);
+    width: 25vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    border-radius: .5em;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, .5);
+    z-index: 1000;
+    display: none;
+    transition: width .5s;
+}
+
+@media screen and (max-width: 750px) {
+    .cookie-popup {
+        width: 50vw;
+    }
+}
+
+.cookie-popup button {
+    background-color: #ffad3b;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 50%;
+}
+
+.cookie-popup button:hover {
+    background-color: #ff9200;
+}

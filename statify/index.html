@@ -11,6 +11,10 @@
         <title>Statify</title>
     </head>
     <body>
+        <div id="cookie-popup" class="cookie-popup">
+            <p>We use cookies to improve your experience on this website. By visiting this site, you automatically accept our use of cookies.</p>
+            <button id="close-cookie-popup">Got it!</button>
+        </div>
         <div class="navbar">
             <div class="menu-icon mobile"></div>
             <div class="navigation">
@@ -24,10 +28,11 @@
         <div class="main-container">
             <div class="header">
                 <div class="title">
-                    Statify
+                    <h1>Statify</h1>
                     <div class="description">
                         Let's bring you into a new world of statistics.
                     </div>
+                    <div class="install">Download now!</div>
                 </div>
                 <div class="img-container">
                     <img src="/styles/header-lowres.gif" alt="">
@@ -41,6 +46,8 @@
                     <div class="introduction-description">
                         <p>Statify basically lets you visualize your in-game statistics inside a Google Spreadsheet. It provides Pie Charts of important stats and some not so important (silly) stats.</p>
                         <p>This mod uploads your statistics into your Google Spreadsheets every 2 minutes.</p>
+                    </div>
+                    <!-- <div class="intro-table">
                         <div class="excel-table">
                             <div class="header-row">
                                 <div class="cell cell-header corner"></div>
@@ -67,7 +74,7 @@
                                 <div class="cell">752</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="slider-wrapper">
                         <div class="slider">
@@ -76,41 +83,46 @@
                             <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5tQLkw0rWLdAY_OQOZr9uaqsecJUQydBfQU5n-bk5EUOT6dFE8dZ4EqGE_v3bUPn201WD5jECeRjj/pubchart?oid=1736625042&format=image" alt="" id="slide-3" />
                             <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5tQLkw0rWLdAY_OQOZr9uaqsecJUQydBfQU5n-bk5EUOT6dFE8dZ4EqGE_v3bUPn201WD5jECeRjj/pubchart?oid=1538698103&format=image" alt="" id="slide-4" />
                         </div>
-                        <div class="slider-nav">
-                            <a href="#slide-1"></a>
-                            <a href="#slide-2"></a>
-                            <a href="#slide-3"></a>
-                            <a href="#slide-4"></a>
-                        </div>
+                        <br>
+                        Charts from <codelink id="luckey">luckeY's</codelink> Statify spreadsheet.
                     </div>
                 </div>
                 <div class="compatibility-container">
                     <div class="compatibility-title">
-                        <h2>And what mods are needed for Statify?</h2>
+                        <h2>What mods are needed for Statify?</h2>
                     </div>
                     <div class="compatibility-description">
                         <p>Currently the mod is only compatible with <code id="fabric">Fabric API</code> and its Loader. I didn't plan to make a Forge version, but if there is enough demand for it, then I'll think about it.</p>
-
-                        <p>The required Fabric versions for the current release of Statify are:</p>
-
-                        <div class="excel-table">
-                            <div class="header-row">
-                                <div class="cell cell-header">Name</div>
-                                <div class="cell cell-header">Version</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell cell-header">
-                                    <codelink id="fabric-download">Fabric API</codelink>
+                        
+                        <div class="version-req">
+                            <p>The required Fabric versions for the current release of Statify are:</p>
+                            <div class="excel-table">
+                                <div class="header-row">
+                                    <div class="cell cell-header">Name</div>
+                                    <div class="cell cell-header">Version</div>
                                 </div>
-                                <div class="cell">0.107.0+1.21.3</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell cell-header">
-                                    <codelink id="fabric-loader-download">Fabric Loader</codelink>
+                                <div class="row">
+                                    <div class="cell cell-header">
+                                        <codelink id="fabric-download">Fabric API</codelink>
+                                    </div>
+                                    <div class="cell">0.107.0+1.21.3</div>
                                 </div>
-                                <div class="cell">0.16.9</div>
+                                <div class="row">
+                                    <div class="cell cell-header">
+                                        <codelink id="fabric-loader-download">Fabric Loader</codelink>
+                                    </div>
+                                    <div class="cell">0.16.9</div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="download-title">
+                        <h2>Download</h2>
+                    </div>
+                </div>
+                <div class="download-container">
+                    <div class="download-description">
+                        You can download Statify from my <codelink id="statify">My website</codelink> or from the <codelink id="gitrepo">GitHub repository</codelink> under releases. 
                     </div>
                 </div>
             </div>

@@ -14,11 +14,29 @@
     <body>
         <div class="release-container" id="release-container">
         </div>
+        <div id="cookie-popup" class="cookie-popup">
+            <p>We use cookies to improve your experience on this website. By visiting this site, you automatically accept our use of cookies.</p>
+            <button id="close-cookie-popup">Got it!</button>
+        </div>
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const currentPath = window.location.pathname;
             const currentSearch = window.location.search;
+            const popup = document.getElementById("cookie-popup");
+            const closeBtn = document.getElementById("close-cookie-popup");
+            const cookieKey = "cookie-popup-dismissed";
+
+            if(!localStorage.getItem(cookieKey)) {
+                popup.style.display = "flex";
+            }
+
+            closeBtn.addEventListener("click", () => {
+                popup.style.display = "none";
+                localStorage.setItem(cookieKey, "true");
+            });
+
+            
 
             if (currentPath.endsWith('/')) {
                 const newPath = currentPath.slice(0, -1) + currentSearch;
@@ -133,14 +151,27 @@
             function highlightByQuery() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const targetId = urlParams.get('id')?.toLowerCase();
-                
-                document.querySelectorAll(`.releases-info`).forEach(e => e.classList.remove('outlined'));
-                if (targetId) {
-                    const targetElement = document.getElementById(`releases-info-${targetId}`);
-                    if(targetElement) {
-                        targetElement.classList.add("outlined");
-                    }
+
+                if(!urlParams.has('id')) {
+                    window.location.href = `${window.location.origin}/statify`;
+                    return;
                 }
+                
+                document.querySelectorAll("[id^='container-']").forEach(c => {
+                    const containerId = c.id.replace('container-', '');
+
+                    if(targetId && containerId !== targetId) {
+                        c.style.display = "none";
+                    } else {
+                        c.style.display = "flex";
+                        if (containerId === targetId) {
+                            const releasesInfo = c.querySelector('.releases-info');
+                            if(releasesInfo) {
+                                releasesInfo.classList.add("outlined");
+                            }
+                        }
+                    }
+                });
             }
     
             highlightByQuery();
