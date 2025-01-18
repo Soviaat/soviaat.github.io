@@ -1,4 +1,5 @@
 window.addEventListener("load", function() {
+    const top = document.querySelector(".top");
     const popup = document.getElementById("cookie-popup");
     const closeBtn = document.getElementById("close-cookie-popup");
     const cookieKey = "cookie-popup-dismissed";
@@ -7,15 +8,33 @@ window.addEventListener("load", function() {
     const slides = document.querySelectorAll(".slider img");
     const slider = document.querySelector(".slider");
     const install = document.querySelector(".install");
+    const downloadLink = document.querySelector(".download-link");
+    const downloadContainer = document.querySelector(".download-container");
+    const home = document.querySelector(".home-link");
+
     
     if(!localStorage.getItem(cookieKey)) {
         popup.style.display = "flex";
     }
-
+    
     closeBtn.addEventListener("click", () => {
         popup.style.display = "none";
         localStorage.setItem(cookieKey, "true");
     });
+    
+    downloadLink.addEventListener("click", () => {
+        downloadContainer.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    home.addEventListener("click", () => {
+        top.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+
 
     this.window.addEventListener("resize", () => {
         if(window.innerWidth <= 600) {

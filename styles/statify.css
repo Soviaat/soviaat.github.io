@@ -651,3 +651,11 @@ code {
     line-height: clamp(2em, 2vw, 5em);
     margin-top: 2em;
 }
+
+.top {
+    display: flex;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    height: 0;
+}
