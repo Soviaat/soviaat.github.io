@@ -1,0 +1,86 @@
+{
+    "cookiePopupText": {
+        "type": "text",
+        "content": "Sütiket használunk a weboldalunkon szerzett tapasztalatok javítására. Az oldal meglátogatásával automatikusan elfogadod a sütik használatát."
+      },
+    "cookiePopupBtn": {
+        "type": "text",
+        "content": "Értettem!"
+    },
+    "homeLink": {
+        "type": "text",
+        "content": "Főoldal"
+    },
+    "downloadLink": {
+        "type": "text",
+        "content": "Letöltés"
+    },
+    "helpLink": {
+        "type": "text",
+        "content": "Segítség"
+    },
+    "statifyTitle": {
+        "type": "text",
+        "content": "Statify"
+    },
+    "statifyDesc": {
+        "type": "text",
+        "content": "Lépj be a statisztikák új világába."
+    },
+    "downloadNow": {
+        "type": "text",
+        "content": "Letöltés most!"
+    },
+    "whatIsStatify": {
+        "type": "text",
+        "content": "Tehát, mi az a Statify?"
+    },
+    "introDesc": {
+        "type": "text",
+        "content": "A Statify lehetővé teszi, hogy megjelenítse a játékon belüli statisztikáid egy Google Táblázatban. Fontos statisztikákra és néhány kevésbé fontos (vicces) statisztikára is kördiagramokat biztosít."
+    },
+    "introDesc2": {
+        "type": "text",
+        "content": "Ez a mod minden 2 percben feltölti a statisztikáid a Google Táblázatokba."
+    },
+    "compatibilityTitle": {
+        "type": "text",
+        "content": "Milyen modokra van szükség a Statify-hoz?"
+    },
+    "compatibilityDesc": {
+        "type": "html",
+        "content": "Jelenleg a mod csak a <code id='fabric'>Fabric API</code>-al és annak Loaderjével kompatibilis. Nem terveztem Forge verziót készíteni, de ha elegendő igény mutatkozik rá, akkor megfontolom."
+    },
+    "requiredVersions": {
+        "type": "text",
+        "content": "A Statify jelenlegi verziójához szükséges Fabric verziók:"
+    },
+    "downloadTitle": {
+        "type": "text",
+        "content": "Letöltés"
+    },
+    "downloadDesc": {
+        "type": "html",
+        "content": "A Statify-t letöltheted a <codelink id='statify'>weboldalamról</codelink> vagy a <codelink id='gitrepo'>GitHub repóbol</codelink> a releases szekció alatt."
+    },
+    "helpTitle": {
+        "type": "text",
+        "content": "Segítségre van szükséged?"
+    },
+    "helpDesc": {
+        "type": "text",
+        "content": "Hogyha:"
+    },
+    "helpDesc2": {
+        "type": "html",
+        "content": "Bármilyen segítségre van szükséged, a <code id='readme'>Statify readmejében</code> mindent megtalálsz."
+    },
+    "helpDesc3": {
+        "type": "html",
+        "content": "Hibát találtál, vagy javaslatod van, kérlek, <code id='git-issue'>nyiss egy hibajegyet GitHub-on</code> a megfelelő címkékkel."
+    },
+    "streamerCharts": {
+        "type": "html",
+        "content": "Diagramok <codelink id='luckey'>luckeY</codelink> Statify táblázatából."
+    }
+}

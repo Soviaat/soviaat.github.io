@@ -1,0 +1,86 @@
+{
+    "cookiePopupText": {
+        "type": "text",
+        "content": "We use cookies to improve your experience on this website. By visiting this site, you automatically accept our use of cookies."
+      },
+    "cookiePopupBtn": {
+        "type": "text",
+        "content": "Got it!"
+    },
+    "homeLink": {
+        "type": "text",
+        "content": "Home"
+    },
+    "downloadLink": {
+        "type": "text",
+        "content": "Download"
+    },
+    "helpLink": {
+        "type": "text",
+        "content": "Help"
+    },
+    "statifyTitle": {
+        "type": "text",
+        "content": "Statify"
+    },
+    "statifyDesc": {
+        "type": "text",
+        "content": "Let's bring you into a new world of statistics."
+    },
+    "downloadNow": {
+        "type": "text",
+        "content": "Download now!"
+    },
+    "whatIsStatify": {
+        "type": "text",
+        "content": "So, what is Statify?"
+    },
+    "introDesc": {
+        "type": "text",
+        "content": "Statify basically lets you visualize your in-game statistics inside a Google Spreadsheet. It provides Pie Charts of important stats and some not so important (silly) stats."
+    },
+    "introDesc2": {
+        "type": "text",
+        "content": "This mod uploads your statistics into your Google Spreadsheets every 2 minutes."
+    },
+    "compatibilityTitle": {
+        "type": "text",
+        "content": "What mods are needed for Statify?"
+    },
+    "compatibilityDesc": {
+        "type": "html",
+        "content": "Currently the mod is only compatible with <code id='fabric'>Fabric API</code> and its Loader. I didn't plan to make a Forge version, but if there is enough demand for it, then I'll think about it."
+    },
+    "requiredVersions": {
+        "type": "text",
+        "content": "The required Fabric versions for the current release of Statify are:"
+    },
+    "downloadTitle": {
+        "type": "text",
+        "content": "Download"
+    },
+    "downloadDesc": {
+        "type": "html",
+        "content": "You can download Statify from my <codelink id='statify'>My website</codelink> or from the <codelink id='gitrepo'>GitHub repository</codelink> under releases."
+    },
+    "helpTitle": {
+        "type": "text",
+        "content": "Need help?"
+    },
+    "helpDesc": {
+        "type": "text",
+        "content": "If you:"
+    },
+    "helpDesc2": {
+        "type": "html",
+        "content": "Need any help, <code id='readme'>Statify's readme</code> contains everything."
+    },
+    "helpDesc3": {
+        "type": "html",
+        "content": "Have encountered a bug, or got suggestions or questions, please <code id='git-issue'>open an issue ticket on GitHub</code> with the proper labels."
+    },
+    "streamerCharts": {
+        "type": "html",
+        "content": "Charts from <codelink id='luckey'>luckeY's</codelink> Statify spreadsheet."
+    }
+}

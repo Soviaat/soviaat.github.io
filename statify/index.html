@@ -10,8 +10,8 @@
         <meta name="image" content="https://soviaat.dev/statify/statify-logo.png">
         <meta property="og:image" content="https://soviaat.dev/statify/statify-logo.png">
         <meta name="keywords" content="Soviaat, Sxviaat, sxviaat, soviaat, statify, Statify, Statify mod, statify mod, minecraft statify mod, soviaatdev, minecraft statistics mod, minecraft, Minecraft, Statistics Mod for minecraft">
+        <script type="module" defer>import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill"; polyfillCountryFlagEmojis();</script>
         <link rel="stylesheet" href="../styles/statify.css">
-        <script src="/js/statify.js"></script>
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
         <title>Statify | Minecraft Mod</title>
     </head>
@@ -19,47 +19,55 @@
         <div class="loading-container">
             <div class="loading">
                 <div class="loading-bar">
-                    Loading:&nbsp;<span id="percent">0%</span>
+                    Loading:&nbsp;<span id='percent'>0%</span>
                 </div>
             </div>
         </div>
         <div class="main-body">
             <div class="top"></div>
             <div id="cookie-popup" class="cookie-popup">
-                <p>We use cookies to improve your experience on this website. By visiting this site, you automatically accept our use of cookies.</p>
-                <button id="close-cookie-popup">Got it!</button>
+                <p data-translate-key="cookiePopupText"></p>
+                <button data-translate-key="cookiePopupBtn" id="close-cookie-popup"></button>
             </div>
             <div class="navbar">
                 <div class="menu-icon mobile"></div>
                 <div class="navigation">
                     <ul>
-                        <li class="home-link">Home</li>
-                        <li class="download-link">Download</li>
-                        <li class="help-link">Help</li>
+                        <li data-translate-key="homeLink" class="home-link"></li>
+                        <li data-translate-key="downloadLink" class="download-link"></li>
+                        <li data-translate-key="helpLink" class="help-link"></li>
+                        <li class="dropdown">
+                            <div class="dropdown-selected" value="en"><span>English</span>&nbsp;🇬🇧</div>
+                            <div class="dropdown-items">
+                                <div class="dropdown-option" value="en"><span>English</span>&nbsp;🇬🇧</div>
+                                <div class="dropdown-option" value="hu"><span>Magyar</span>&nbsp;🇭🇺</div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+               
             </div>
             <div class="main-container">
                 <div class="header">
                     <div class="title">
                         <h1>Statify</h1>
-                        <div class="description">
-                            Let's bring you into a new world of statistics.
+                        <div data-translate-key="statifyDesc" class="description">
+                            <!-- Let's bring you into a new world of statistics. -->
                         </div>
-                        <div class="install">Download now!</div>
+                        <div data-translate-key="downloadNow" class="install"></div>
                     </div>
                     <div class="img-container">
                         <img src="/styles/header-lowres.gif" alt="">
                     </div>
                     <div class="introduction-title">
-                        <h1>So, what is Statify?</h1>
+                        <h1 data-translate-key="whatIsStatify"></h1>
                     </div>
                 </div>
                 <div class="main">
                     <div class="introduction-container">
                         <div class="introduction-description">
-                            <p>Statify basically lets you visualize your in-game statistics inside a Google Spreadsheet. It provides Pie Charts of important stats and some not so important (silly) stats.</p>
-                            <p>This mod uploads your statistics into your Google Spreadsheets every 2 minutes.</p>
+                            <p data-translate-key="introDesc"></p>
+                            <p data-translate-key="introDesc2"></p>
                         </div>
                         <!-- <div class="intro-table">
                             <div class="excel-table">
@@ -97,18 +105,18 @@
                                 <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5tQLkw0rWLdAY_OQOZr9uaqsecJUQydBfQU5n-bk5EUOT6dFE8dZ4EqGE_v3bUPn201WD5jECeRjj/pubchart?oid=1538698103&format=image" alt="" id="slide-4" />
                             </div>
                             <br>
-                            Charts from <codelink id="luckey">luckeY's</codelink> Statify spreadsheet.
+                            <span data-translate-key="streamerCharts"></span>
                         </div>
                     </div>
                     <div class="compatibility-container">
                         <div class="compatibility-title">
-                            <h2>What mods are needed for Statify?</h2>
+                            <h2 data-translate-key="compatibilityTitle"></h2>
                         </div>
                         <div class="compatibility-description">
-                            <p>Currently the mod is only compatible with <code id="fabric">Fabric API</code> and its Loader. I didn't plan to make a Forge version, but if there is enough demand for it, then I'll think about it.</p>
-            
+                            <p data-translate-key="compatibilityDesc"></p>
+                            
                             <div class="version-req">
-                                <p>The required Fabric versions for the current release of Statify are:</p>
+                                <p data-translate-key="requiredVersions"></p>
                                 <div class="excel-table">
                                     <div class="header-row">
                                         <div class="cell cell-header">Name</div>
@@ -130,33 +138,33 @@
                             </div>
                         </div>
                         <div class="download-title">
-                            <h2>Download</h2>
+                            <h2 data-translate-key="downloadTitle"></h2>
                         </div>
                     </div>
                     <div class="download-container">
-                        <div class="download-description">
-                            You can download Statify from my <codelink id="statify">My website</codelink> or from the <codelink id="gitrepo">GitHub repository</codelink> under releases.
+                        <div data-translate-key="downloadDesc" class="download-description">
                         </div>
                     </div>
                     <div class="help-container">
                         <div class="help-title">
-                            <h2>Need help?</h2>
+                            <h2 data-translate-key="helpTitle"></h2>
                         </div>
-                    <div class="help-description" id="help">
-                        <h3>If you:</h3>
-                        <ul>
-                            <li>
-                                <p>Need any help, <code id="readme">Statify's readme</code> contains everything.</p>
-                            </li>
-                            <li>
-                                <p>Have encountered a bug, or got suggestions or questions, please <code id="git-issue">open an issue ticket on GitHub</code> with the proper labels.</p>
-                            </li>
-                        </ul>
-                        
+                        <div class="help-description" id="help">
+                            <h3 data-translate-key="helpDesc"></h3>
+                            <ul>
+                                <li>
+                                   <p data-translate-key="helpDesc2"></p> 
+                                </li>
+                                <li>
+                                    <p data-translate-key="helpDesc3"></p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
+        <script src="/js/lang.js"></script>
+        <script src="/js/statify.js" defer></script>
     </body>
 </html>
