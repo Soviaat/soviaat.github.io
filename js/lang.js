@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setCookie(name, value, days) {
         const date = new Date();
-        date.setTime(date.getTime() + (days + 24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         const exp = `expires=${date.toUTCString()}`;
         document.cookie = `${name}=${value};${exp};path=/`;
     }
