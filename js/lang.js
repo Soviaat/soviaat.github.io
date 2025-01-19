@@ -1,7 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     const langSelector = document.querySelector(".dropdown-selected");
     const toTranslate = document.querySelectorAll("[data-translate-key]");
-    
+
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+        return match ? match[2] : null;
+    }
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days + 24 * 60 * 60 * 1000));
+        const exp = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${exp};path=/`;
+    }
+
     function loadLang(lang) {
         fetch(`/lang/${lang}.json`)
             .then(resp => resp.json())
@@ -28,12 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
             langSelector.setAttribute('value', selectedValue);
             langSelector.textContent = this.textContent;
 
-            // Load the selected language
+            setCookie("selectedLang", selectedValue, 7);
+
             loadLang(selectedValue);
         });
     });
+
+    const savedLang = getCookie("selectedLang") || "en";
+    langSelector.setAttribute("value", savedLang);
+    langSelector.innerHTML = savedLang === "en" ? "<span>English</span>&nbsp;🇬🇧" : "<span>Magyar</span>&nbsp;🇭🇺";
     
-    loadLang('en');
+    loadLang(savedLang);
 
     function setupTooltips() {
         const codeElements = [
