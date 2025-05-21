@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://soviaat.dev/
+Sitemap: https://soviaat.dev/sitemap.xml
