@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     document.querySelector('.dropdown-selected').addEventListener('click', function () {
         const dropdown = this.parentElement;
         dropdown.classList.toggle('show');
@@ -166,6 +167,44 @@ document.addEventListener("DOMContentLoaded", () => {
     install.addEventListener("click", () => {
         window.open("https://soviaat.dev/mods?id=Statify");
     });
+
+    const supportLink = document.querySelector(".support-link");
+    supportLink.addEventListener("click", () => {
+        const popup = document.querySelector(".kofi-popup");
+        const popupContainer = document.querySelector(".popup-container");
+        const donationFrame = document.createElement("iframe");
+        donationFrame.src = "https://ko-fi.com/sxviaat_/?hidefeed=true&widget=true&embed=true&preview=true";
+        donationFrame.id = "kofiframe"
+        donationFrame.title = "sxviaat_";
+
+        popup.style.display = "flex";
+        popupContainer.appendChild(donationFrame);
+        document.body.style.overflow = "hidden";
+
+        const closeKofiButton = document.querySelector(".close");
+        const closePopup = () => {
+            document.body.style.overflow = "auto";
+            popup.style.display = "none";
+            donationFrame.remove();
+        }
+
+        closeKofiButton.addEventListener("click", closePopup);
+
+        popup.addEventListener("click", (e) => {
+            if(!popupContainer.contains(e.target) || e.target === closeKofiButton) {
+                closePopup();
+            }
+        });
+
+        donationFrame.addEventListener("click", (e) => {
+            e.stopPropagation();
+        })
+    });
+    
+    const creatorOne = document.querySelector(".creator:first-child");
+    creatorOne.addEventListener("click", () => window.open("https://github.com/Soviaat", "_blank"));
+    const creatorTwo = document.querySelector(".creator:last-child");
+    creatorTwo.addEventListener("click", () => window.open("https://instagram.com/kendiii.2", "_blank"));
 });
 
 function scrollToElement(list, targetList) {

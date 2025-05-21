@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedLang = getCookie("selectedLang") || "en";
     langSelector.setAttribute("value", savedLang);
     langSelector.innerHTML = savedLang === "en" ? "<span>English</span>&nbsp;🇬🇧" : "<span>Magyar</span>&nbsp;🇭🇺";
-    
     loadLang(savedLang);
 
     function setupTooltips() {

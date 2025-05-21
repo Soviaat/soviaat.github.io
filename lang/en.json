@@ -82,5 +82,9 @@
     "streamerCharts": {
         "type": "html",
         "content": "Charts from <codelink id='luckey'>luckeY's</codelink> Statify spreadsheet."
+    },
+    "supportMe": {
+        "type": "html",
+        "content": "Support the development on Ko-Fi!"
     }
 }

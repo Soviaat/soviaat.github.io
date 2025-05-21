@@ -82,5 +82,9 @@
     "streamerCharts": {
         "type": "html",
         "content": "Diagramok <codelink id='luckey'>luckeY</codelink> Statify táblázatából."
+    },
+    "supportMe": {
+        "type": "html",
+        "content": "Támogasd a fejlesztést Ko-Fi-n!"
     }
 }
