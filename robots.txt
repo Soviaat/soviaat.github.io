@@ -1,1 +1,4 @@
-https://soviaat.dev/favicon.png
+User-agent: *
+Disallow: 
+
+Sitemap: https://soviaat.dev/sitemap.xml
