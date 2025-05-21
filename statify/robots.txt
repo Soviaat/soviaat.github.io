@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: https://soviaat.dev/statify/sitemap.xml
