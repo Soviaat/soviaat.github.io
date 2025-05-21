@@ -1,3 +1,12 @@
+window.addEventListener("load", () => {
+    const loadingContainer = document.querySelector(".loading-container");
+    loadingContainer.style.opacity = '0';
+
+    setTimeout(() => {
+        loadingContainer.style.display = "none";
+    }, 1000);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector('.dropdown-selected').addEventListener('click', function () {
@@ -56,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
     
     trackWidthDuringTransition(loadingBar, percent);
     
-    setTimeout(() => {
-        const loadingContainer = document.querySelector(".loading-container");
-        loadingContainer.style.opacity = '0';
+    // setTimeout(() => {
+    //     const loadingContainer = document.querySelector(".loading-container");
+    //     loadingContainer.style.opacity = '0';
 
-        setTimeout(() => {
-            loadingContainer.style.display = "none";
-        }, 1000);
-    }, 4350);
+    //     setTimeout(() => {
+    //         loadingContainer.style.display = "none";
+    //     }, 1000);
+    // }, 4350);
         
 
         
