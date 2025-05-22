@@ -183,7 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const popupContainer = document.querySelector(".popup-container");
         const donationFrame = document.createElement("iframe");
         donationFrame.src = "https://ko-fi.com/sxviaat_/?hidefeed=true&widget=true&embed=true&preview=true";
-        donationFrame.id = "kofiframe"
+        donationFrame.id = "kofiframe";
+        donationFrame.attributes += "allowpaymentrequest";
         donationFrame.title = "sxviaat_";
 
         popup.style.display = "flex";

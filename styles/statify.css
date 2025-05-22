@@ -38,6 +38,39 @@
     .cookie-popup {
         width: 50vw;
     }
+
+    footer {
+        flex-direction: column;
+        padding: 0 1em;
+        margin: 0;
+    }
+
+    footer > * {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+
+    .support > .support-link {
+        font-size: clamp(.8em, 2vw, 1.4em);
+    }
+
+    .kofi-popup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .kofi-popup > .popup-container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popup-container > .close {
+        display: none;
+    }
 }
 
 .cookie-popup button {
