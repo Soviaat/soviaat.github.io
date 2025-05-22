@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const donationFrame = document.createElement("iframe");
         donationFrame.src = "https://ko-fi.com/sxviaat_/?hidefeed=true&widget=true&embed=true&preview=true";
         donationFrame.id = "kofiframe";
-        donationFrame.attributes += "allowpaymentrequest";
+        donationFrame.setAttribute("allowpaymentrequest", "");
         donationFrame.title = "sxviaat_";
 
         popup.style.display = "flex";
