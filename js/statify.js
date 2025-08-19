@@ -113,6 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
             container.scrollIntoView({
                 behavior: "smooth"
             });
+            lastClicked = container;
+
+            linkList.forEach(([_, c]) => c.classList.remove("here"));
+            container.classList.add("here");
+
+            setTimeout(() => container.classList.remove("here"), 3000)
         });
     });
     

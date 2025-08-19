@@ -274,6 +274,10 @@ body {
     width: 100%;
 }
 
+.main > * {
+    z-index: 30;
+}
+
 .menu-icon {
     background-color: var(--primary);
     justify-content: center;
@@ -1035,4 +1039,26 @@ footer > * {
 
 .creator:hover {
     filter: grayscale(0);
+}
+
+.here {
+    animation: boioioiong 3s infinite ease;
+}
+
+@keyframes boioioiong {
+    0% {
+        outline: 2px solid transparent;
+    }
+
+    25% {
+        outline: 2px solid var(--orange);
+    }
+
+    75% {
+        outline: 2px solid var(--secondary);
+    }
+
+    100% {
+        outline: 2px solid transparent;
+    }
 }
